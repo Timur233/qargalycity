@@ -1,0 +1,36 @@
+body {
+    overflow-x: hidden;
+    font-family: 'Circe';
+    font-size: 18px;
+    line-height: 1.4;
+    color: $text;
+}   
+
+.section {
+    padding: spacer(24) 0;
+
+    &--gray {
+        background-color: $bg-gray;
+    }
+}
+
+.section-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+ 
+    &__h2 {
+        font-size: 38px;
+        line-height: 1.2;
+        font-weight: 300;
+        margin-bottom: spacer(5);
+    }
+
+    &__control {
+        display: flex;
+        position: relative;
+        gap: spacer(6);
+        margin-bottom: spacer(5);
+    }
+}

@@ -1,4 +1,101 @@
-<section id="gallery" class="gallery pt-6 pb-5 bg-light-gradient">
+<section id="gallery" class="main-gallery section section--gray">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="section-title__h2">Галерея</h2>
+            <div class="section-title__control">
+                <div class="swiper-button-prev main-gallery__controll"></div>
+                <div class="swiper-button-next main-gallery__controll"></div>
+            </div>
+        </div>
+        <div class="gallery-swiper swiper-container d-block d-md-none">
+            <div class="swiper-wrapper">
+                <!-- {% for item in gallery_items %}
+                    <div class="main-gallery__item swiper-slide">
+                        <a 
+                            href="https://cms.abpx.kz{{ item.children[0].settings.image.path }}" 
+                            class="main-gallery__link" 
+                            onclick="frontend.lightBox('https://cms.abpx.kz{{ item.children[0].settings.image.path }}'); return false"
+                        >
+                            <img 
+                                class="main-gallery__img"
+                                src="https://cms.abpx.kz{{ item.children[0].settings.image.path }}" 
+                                alt="{{ item.children[0].settings.text }}"
+                            >
+                        </a>
+                    </div>
+                {% endfor %} -->
+
+                <div class="main-gallery__item swiper-slide">
+                    <a 
+                        href="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c8f6977a61--.jpg" 
+                        class="main-gallery__link" 
+                        onclick="frontend.lightBox('https://cms.abpx.kz/storage/uploads/2022/02/08/6202c8f6977a61--.jpg'); return false"
+                    >
+                        <img 
+                            class="main-gallery__img"
+                            src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c8f6977a61--.jpg" 
+                        >
+                    </a>
+                </div>
+
+                <div class="main-gallery__item swiper-slide">
+                    <a 
+                        href="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c933012c94--.jpg" 
+                        class="main-gallery__link" 
+                        onclick="frontend.lightBox('https://cms.abpx.kz/storage/uploads/2022/02/08/6202c933012c94--.jpg'); return false"
+                    >
+                        <img 
+                            class="main-gallery__img"
+                            src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c933012c94--.jpg" 
+                        >
+                    </a>
+                </div>
+
+                <div class="main-gallery__item swiper-slide">
+                    <a 
+                        href="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c9207d5283--.jpg" 
+                        class="main-gallery__link" 
+                        onclick="frontend.lightBox('https://cms.abpx.kz/storage/uploads/2022/02/08/6202c9207d5283--.jpg'); return false"
+                    >
+                        <img 
+                            class="main-gallery__img"
+                            src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c9207d5283--.jpg" 
+                        >
+                    </a>
+                </div>
+
+                <div class="main-gallery__item swiper-slide">
+                    <a 
+                        href="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c915e6bc32--.jpg" 
+                        class="main-gallery__link" 
+                        onclick="frontend.lightBox('https://cms.abpx.kz/storage/uploads/2022/02/08/6202c915e6bc32--.jpg'); return false"
+                    >
+                        <img 
+                            class="main-gallery__img"
+                            src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c915e6bc32--.jpg" 
+                        >
+                    </a>
+                </div>
+
+                <div class="main-gallery__item swiper-slide">
+                    <a 
+                        href="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c8f6977a61--.jpg" 
+                        class="main-gallery__link" 
+                        onclick="frontend.lightBox('https://cms.abpx.kz/storage/uploads/2022/02/08/6202c8f6977a61--.jpg'); return false"
+                    >
+                        <img 
+                            class="main-gallery__img"
+                            src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202c8f6977a61--.jpg" 
+                        >
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <section id="gallery" class="gallery pt-6 pb-5 bg-light-gradient">
     <div class="container">
         <h2 class="section-title section-title--green">
             <span class="section-title__aplet section-title__aplet--light">{{ gallery_title }}</span>
@@ -56,4 +153,4 @@
             <div class="swiper-button-prev"></div>
         </div>
     </div>
-</section>
+</section> -->

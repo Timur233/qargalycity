@@ -5,9 +5,9 @@
 
     <title>{{ site_title }}</title>
     <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
+    <link rel="stylesheet" href="assets/css/swiper.min.css" />
     <link rel="stylesheet" href="assets/css/main.css">
     {# <link rel="stylesheet" href="assets/css/bootstrap.css?v=5" />
-    <link rel="stylesheet" href="assets/css/swiper.min.css" />
     <link rel="stylesheet" href="assets/css/libs/animate.css">
     <link rel="stylesheet" href="assets/css/all.min.css" />
     <link rel="stylesheet" href="assets/css/style.css?v=28" />
@@ -85,13 +85,13 @@
 
     {{ include('widgets/about_project.twig') }}
 
+    {{ include('widgets/gallery.twig') }}
+
     {{ include('widgets/horisontal_callback.twig') }}
 
     {{ include('widgets/locations_filter.twig') }}
 
     {{ include('widgets/map.twig') }}
-
-    {{ include('widgets/gallery.twig') }}
 
     {{ include('widgets/horisontal_callback.twig') }}
 
@@ -143,7 +143,7 @@
     src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=c931e95f-6835-4672-9786-8ec02a9db87a"
     type="text/javascript"
   ></script>
-{# 
+
   <script>
 
     var translater = new Object({
@@ -602,19 +602,13 @@
       function galleryCarousel() {
 
         var galery = new Swiper('.gallery-swiper', {
-          effect: false,
           loop: false,
-          autoHeight: true,
-          centeredSlides: false,
-          slidesPerView: 1.2,
+          slidesPerView: "auto",
           initialSlide: 0,
           keyboardControl: true,
           mousewheelControl: true,
-          lazyLoading: false,
-          preventClicks: false,
-          preventClicksPropagation: false,
-          lazyLoadingInPrevNext: false,
-          spaceBetween: 10,
+          autoHeight: true,
+          spaceBetween: 20,
           navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
@@ -1018,20 +1012,20 @@
       
       function frontendReady() {
         authorMarker();
-        buildingStepsCarousel();
+        // buildingStepsCarousel();
         galleryCarousel();
-        closePreloader();
+        // closePreloader();
         phoneValidator();
-        headerMenuLinks();
+        // headerMenuLinks();
       }
 
       function frontendResize() {
-        buildingStepsCarousel();
+        // buildingStepsCarousel();
       }
 
       function frontendScroll() {
-        paralaxSlider(window.pageYOffset);
-        activeMenuItem(window.pageYOffset);
+        // paralaxSlider(window.pageYOffset);
+        // activeMenuItem(window.pageYOffset);
         //Slider paralax
         var scrollPosition = 0
         //var decor1 = document.querySelector('.decor1')
@@ -1053,21 +1047,21 @@
         }
 
         if (window.pageYOffset > 450)	{
-          header.classList.add('fixed');
-          slider.style.marginTop = header.offsetHeight + 'px';
+          // header.classList.add('fixed');
+          // slider.style.marginTop = header.offsetHeight + 'px';
           // pt-4 pb-1
         } else {
-          header.classList.remove('fixed');
-          slider.style.marginTop = '0px';
+          // header.classList.remove('fixed');
+          // slider.style.marginTop = '0px';
         }
 
         if (window.pageYOffset > 650)	{
-          if (!header.classList.contains('sticky')) {
-            header.classList.add('sticky');
+          if (!header.classList.contains('main-header--sticky')) {
+            header.classList.add('main-header--sticky');
           }
         } else {
-          if (header.classList.contains('sticky')) {
-            header.classList.remove('sticky');
+          if (header.classList.contains('main-header--sticky')) {
+            header.classList.remove('main-header--sticky');
           }
         }
       }
@@ -1098,7 +1092,7 @@
         frontend.filterCreiate(offersAll);
     }
 
-  </script> #}
+  </script>
 
   {{ site_scripts_in_footer|raw }}
 
