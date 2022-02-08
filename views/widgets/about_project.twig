@@ -1,0 +1,47 @@
+<section id="about" class="about pb-5 pt-6">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="section-title__aplet">{{ about_title }}</span>
+        </h2>
+        <div class="row">
+            <div class="col-md-4 about__info">
+                <h4 class="about__title">{{ about_subtitle }}</h4>
+                <div class="about__desc">
+                    {{ about_desc|raw }}
+                </div>
+            </div>
+            <div class="col-md-4 advantages p-4 p-sm-5">
+                <h5 class="advantages__title">
+                    {{ about_advantages_title }}
+                </h5>
+                <div class="advantages__items">
+                    {% for item in about_advantages %}
+                        <div class="advantages__item">
+                            <img 
+                                src="https://cms.abpx.kz/{{ item.path }}" 
+                                alt="{{ item.meta.title }}"
+                            >
+                            <span class="advantages__text">
+                                {{ item.meta.title }}
+                            </span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-md-4">
+                <img 
+                    src="https://cms.abpx.kz/{{ about_image.path }}" 
+                    alt="{{ about_subtitle }}"
+                    class="about__image"
+                >
+                <a class="download-link" target="_blank" href="https://cms.abpx.kz/{{ about_presintation }}">
+                    <img 
+                        src="https://cms.abpx.kz/storage/uploads/2021/12/24/61c557eadd860-.svg" 
+                        alt="{{ translate['download-press'] }}"
+                    >
+                    <span>{{ translate['download-press']|raw }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

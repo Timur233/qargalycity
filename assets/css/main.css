@@ -1,0 +1,203 @@
+input,
+button,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0px; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+
+img {
+  display: block; }
+
+body {
+  line-height: 1;
+  margin: 0; }
+
+ol,
+ul {
+  list-style: none; }
+
+* {
+  box-sizing: border-box; }
+
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-Regular.eot");
+  src: local("Circe"), local("Circe-Regular"), url("../fonts/Circe-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Circe-Regular.woff") format("woff"), url("../fonts/Circe-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-ExtraLight.eot");
+  src: local("Circe ExtraLight"), local("Circe-ExtraLight"), url("../fonts/Circe-ExtraLight.eot?#iefix") format("embedded-opentype"), url("../fonts/Circe-ExtraLight.woff") format("woff"), url("../fonts/Circe-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-Thin.eot");
+  src: local("Circe Thin"), local("Circe-Thin"), url("../fonts/Circe-Thin.eot?#iefix") format("embedded-opentype"), url("../fonts/Circe-Thin.woff") format("woff"), url("../fonts/Circe-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-Light.eot");
+  src: local("Circe Light"), local("Circe-Light"), url("../fonts/Circe-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Circe-Light.woff") format("woff"), url("../fonts/Circe-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-Bold.eot");
+  src: local("Circe Bold"), local("Circe-Bold"), url("../fonts/Circe-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/Circe-Bold.woff") format("woff"), url("../fonts/Circe-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Circe';
+  src: url("../fonts/Circe-ExtraBold.eot");
+  src: local("Circe ExtraBold"), local("Circe-ExtraBold"), url("../fonts/Circe-ExtraBold.eot?#iefix") format("embedded-opentype"), url("../fonts/Circe-ExtraBold.woff") format("woff"), url("../fonts/Circe-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal; }
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto; }
+
+.container-fluid {
+  width: 100%;
+  padding: 0 80px;
+  margin: 0 auto; }
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .flex__col {
+    flex: 0 0 auto; }
+
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 4px 24px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 100px;
+  border: 1px solid #689FD9;
+  background-color: #689FD9;
+  transition: 0.16s background-color, 0.16s border-color, 0.24s box-shadow;
+  user-select: none; }
+  .btn:hover {
+    background-color: #7cacde;
+    border-color: #7cacde; }
+  .btn:focus, .btn:active {
+    box-shadow: 0 0 0 2px rgba(104, 159, 217, 0.3); }
+  .btn__circle {
+    padding: 8px;
+    border-color: rgba(231, 231, 231, 0.2);
+    background-color: rgba(231, 231, 231, 0.2);
+    box-shadow: 0px 2px 5px -3px black; }
+    .btn__circle > img {
+      display: block;
+      transition: 0.16s transform, 0.16s box-shadow; }
+    .btn__circle--active > img {
+      transform: rotate(180deg); }
+    .btn__circle:hover {
+      background-color: rgba(231, 231, 231, 0.2);
+      border-color: rgba(231, 231, 231, 0.2); }
+    .btn__circle:focus, .btn__circle:active {
+      background-color: rgba(231, 231, 231, 0.4);
+      border-color: rgba(231, 231, 231, 0.4);
+      box-shadow: 0px 0px 5px -3px black; }
+  .btn--gradient {
+    border: none;
+    background: linear-gradient(258.99deg, #F28F17 2.49%, #FEED00 135.88%); }
+
+.main-header {
+  width: 100%;
+  color: #ffffff;
+  z-index: 8; }
+  .main-header__content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 28px 0; }
+  .main-header--sticky {
+    position: fixed; }
+  .main-header__logos {
+    margin-right: auto; }
+  .main-header__navigate {
+    margin-right: 40px; }
+
+.logo-block {
+  display: flex;
+  flex-wrap: nowrap; }
+  .logo-block__link:not(:last-child) {
+    margin-right: 24px; }
+
+.navigate__block {
+  display: flex;
+  flex-direction: row;
+  align-items: center; }
+
+.navigate__link {
+  margin-right: 24px;
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4; }
+
+.main-contact__block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; }
+
+.main-contact__phone {
+  font-size: 18px;
+  margin-bottom: 8px; }
+
+.main-slider {
+  display: flex;
+  align-items: flex-end;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-image: url(https://cms.abpx.kz/storage/uploads/2022/02/08/62026bacc6f2cslider-render.jpg); }
+  .main-slider__shadow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, #000000 -8.65%, rgba(0, 0, 0, 0) 36.26%), linear-gradient(0deg, rgba(0, 0, 0, 0.7) -18.33%, rgba(0, 0, 0, 0) 48.52%); }
+  .main-slider__content {
+    margin-top: auto;
+    margin-bottom: 60px; }
+
+.slider-content {
+  position: relative;
+  z-index: 5; }
+  .slider-content__title {
+    font-size: 44px;
+    line-height: 65px;
+    font-weight: 200;
+    color: #ffffff; }
+
+body {
+  font-family: 'Circe';
+  font-size: 14px;
+  color: #2C1F3D; }

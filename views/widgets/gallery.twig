@@ -1,0 +1,59 @@
+<section id="gallery" class="gallery pt-6 pb-5 bg-light-gradient">
+    <div class="container">
+        <h2 class="section-title section-title--green">
+            <span class="section-title__aplet section-title__aplet--light">{{ gallery_title }}</span>
+        </h2>
+        <div class="gallery__items d-none d-md-flex">
+            {% for item in gallery_items %}
+                <div class="gallery__item">
+                    <a 
+                        href="https://cms.abpx.kz{{ item.children.path }}" 
+                        class="gallery__link" 
+                        style="background-image: url('https://cms.abpx.kz{{ gallery_items[0].path }}')"
+                        data-gallery-images="{% for img in item.children[1].settings.gallery %}https://cms.abpx.kz{{ img.path}}{% if loop.last == false  %},{% endif%}{% endfor %}"  
+                        onclick="frontend.lightBox(this.getAttribute('data-gallery-images')); return false"
+                    >
+                        <img 
+                            src="https://cms.abpx.kz{{ item.children[0].settings.image.path }}" 
+                            alt="{{ item.children[0].settings.text }}"
+                        >
+                        <h5 class="gallery__title">
+                            {{ item.children[2].settings.text|raw }}
+                        </h5>
+                        <h6 class="gallery__span">
+                            {{ item.children[3].settings.text }}
+                        </h6>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="gallery-swiper swiper-container d-block d-md-none">
+            <div class="swiper-wrapper">
+                {% for item in gallery_items %}
+                    <div class="gallery__item swiper-slide">
+                        <a 
+                            href="https://cms.abpx.kz{{ item.children.path }}" 
+                            class="gallery__link" 
+                            style="background-image: url('https://cms.abpx.kz{{ gallery_items[0].path }}')"
+                            data-gallery-images="{% for img in item.children[1].settings.gallery %}https://cms.abpx.kz{{ img.path}}{% if loop.last == false  %},{% endif%}{% endfor %}"  
+                            onclick="frontend.lightBox(this.getAttribute('data-gallery-images')); return false"
+                        >
+                            <img 
+                                src="https://cms.abpx.kz{{ item.children[0].settings.image.path }}" 
+                                alt="{{ item.children[0].settings.text }}"
+                            >
+                            <h5 class="gallery__title">
+                                {{ item.children[2].settings.text|raw }}
+                            </h5>
+                            <h6 class="gallery__span">
+                                {{ item.children[3].settings.text }}
+                            </h6>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </div>
+</section>
