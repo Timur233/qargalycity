@@ -1,10 +1,12 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <meta name="viewport" content="width=1300">
 
     <title>{{ site_title }}</title>
-    <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
+    <link rel="shortcut icon" href="https://cms.abpx.kz/storage/uploads/2022/02/09/62041a9c0fa4dGroup-52.png" type="image/png">
+    <!-- <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png"> -->
     <link rel="stylesheet" href="assets/css/swiper.min.css" />
     <link rel="stylesheet" href="assets/css/main.css">
     {# <link rel="stylesheet" href="assets/css/bootstrap.css?v=5" />
@@ -16,7 +18,7 @@
     {{ site_scripts_in_head|raw }}
   
   </head>
-  <body class="nightMode">
+  <body style="min-width: 1300px">
   {{ site_scripts_in_body|raw }}
   
   {# <div id="shadow" onclick="frontend.sidebar('open'); return false"></div>
@@ -95,9 +97,9 @@
 
     {{ include('widgets/building_steps.twig') }}
 
-    {{ include('widgets/about_developer.twig') }}
+    <!-- {{ include('widgets/about_developer.twig') }}
 
-    {{ include('widgets/map.twig') }}
+    {{ include('widgets/map.twig') }} -->
 
     {{ include('widgets/footer.twig') }}
 
@@ -1189,19 +1191,17 @@
       })()
 
       function headerMenuLinks () {
-        const menuItems = document.querySelectorAll('.nav-menu>li>a:not(.lang-switcher__item)');
+        const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item)');
 
         menuItems.forEach(item => {
             item.addEventListener('click', (event) => {
                 const el = document.querySelector(item.getAttribute('href'));
-                const headerHeight = document.querySelector('header').offsetHeight;
+                const headerHeight = document.querySelector('header.main-header').offsetHeight;
 
                 window.scrollTo({
                     top: el.offsetTop - headerHeight,
                     behavior: "smooth"
                 });
-
-                console.log(el.offsetTop, headerHeight);
 
                 event.preventDefault();
             });
@@ -1209,9 +1209,9 @@
       }
 
       function activeMenuItem(scroll) {
-        const menuItems = document.querySelectorAll('.nav-menu>li>a:not(.lang-switcher__item)');
+        const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item)');
         const headerHeight = document.querySelector('header').offsetHeight;
-        const checkActivation = (scroll, elTop, elBottom) => { //return Bool
+        const checkActivation = (scroll, elTop, elBottom) => { 
             if (scroll >= elTop && scroll <= elBottom) {
                 return true;
             }
@@ -1219,22 +1219,25 @@
             return false;
         }
         const selectElement = (element) => {
-            const oldSelect = document.querySelector('.nav-menu>li.active');
+            const oldSelect = document.querySelector('.navigate__link--active');
 
-            oldSelect.classList.remove('active');
-            element.classList.add('active');
+            if (oldSelect) oldSelect.classList.remove('navigate__link--active');
+            element.classList.add('navigate__link--active');
         }
 
         menuItems.forEach(item => {
             const el = document.querySelector(item.getAttribute('href'));
-            const isSelected = checkActivation(
-                                    scroll, 
-                                    el.offsetTop - headerHeight, 
-                                    (el.offsetTop + el.offsetHeight) - headerHeight
-                                );
 
-            if (isSelected) {
-                selectElement(item.parentNode);
+            if (el) {
+              const isSelected = checkActivation(
+                                      scroll, 
+                                      el.offsetTop - headerHeight, 
+                                      (el.offsetTop + el.offsetHeight) - headerHeight
+                                  );
+
+              if (isSelected) {
+                  selectElement(item);
+              }
             }
         });
       }
@@ -1245,7 +1248,7 @@
         galleryCarousel();
         // closePreloader();
         phoneValidator();
-        // headerMenuLinks();
+        headerMenuLinks();
       }
 
       function frontendResize() {
@@ -1254,7 +1257,7 @@
 
       function frontendScroll() {
         // paralaxSlider(window.pageYOffset);
-        // activeMenuItem(window.pageYOffset);
+        activeMenuItem(window.pageYOffset);
         //Slider paralax
         var scrollPosition = 0
         //var decor1 = document.querySelector('.decor1')
@@ -1284,7 +1287,7 @@
           // slider.style.marginTop = '0px';
         }
 
-        if (window.pageYOffset > 650)	{
+        if (window.pageYOffset > 450)	{
           if (!header.classList.contains('main-header--sticky')) {
             header.classList.add('main-header--sticky');
           }

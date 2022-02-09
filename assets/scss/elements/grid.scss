@@ -11,8 +11,15 @@
 
 .container-fluid {
     width: $container-fluid;
-    padding: 0 80px;
+    max-width: 1730px;
+    padding: 0 spacer(20);
     margin: 0 auto;
+
+    @media (max-width: ($container + 160)) {
+        width: auto;
+        max-width: $container;
+        padding: 0 spacer(4);
+    }
 }
 
 .flex {

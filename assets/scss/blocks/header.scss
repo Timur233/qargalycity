@@ -18,7 +18,20 @@
         box-shadow: $box-shadow;
 
         .main-header__content {
-            padding: spacer(4) 0;
+            padding: spacer(2) 0;
+        }
+
+        & .main-contact__phone {
+            margin-bottom: spacer(0);
+        }
+
+        & .logo-block__img {
+            height: 55px;
+            display: none;
+
+            &--dark {
+                display: inline-block;
+            }
         }
     }
 
@@ -40,6 +53,14 @@
             margin-right: spacer(6);
         }
     }
+
+    &__img{
+        height: 64px;
+
+        &--dark {
+            display: none;
+        }
+    }
 }
 
 .navigate {
@@ -51,10 +72,26 @@
     }
 
     &__link {
-        margin-right: spacer(6);
+        position: relative;
+        margin-right: spacer(5);
         font-size: 18px;
         font-weight: 300;
         line-height: 1.4;
+
+        &::before {
+            position: absolute;
+            content: '';
+            left: 0;
+            bottom: 0;
+            height: 2px;
+            right: 100%;
+            transition: right $slow-animation;
+            background-color: $orange;
+        }
+
+        &--active::before {
+            right: 0;
+        }
     }
 }
 
