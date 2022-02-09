@@ -18,6 +18,12 @@ function getData($lang='ru')
 
 }
 
+function getLocationPlans($lang='ru', $params) {
+  $collection = collectData('collections', FLATS_COLLECTION, $params);
+
+  return $collection;
+}
+
 function collectData($type, $item, $params = array()) {
 
   $ch = curl_init('https://cms.abpx.kz/api/' . $type . '/get/' . $item . '?token=account-' . SING_TOKEN);

@@ -10,6 +10,34 @@ $twig = new \Twig\Environment($loader, [
 	'auto_reload' => true //true что бы автоматически чистить кэш
 ]);
 
+if (isset($_GET['get']) && $_GET['get'] == 'data') { 
+
+	if (isset($_GET['lang']) && !empty($_GET['lang'])) {
+		$lang = $_GET['lang'];
+	} else {
+		$lang = '';
+	}
+
+	$params = array(
+		'filter' => array()
+	);
+
+	if (isset($_GET['rooms'])) { $params['filter']['rooms'] = $_GET['rooms']; }
+	if (isset($_GET['floors'])) { $params['filter']['floors'] = $_GET['floors']; }
+	if (isset($_GET['square'])) { $params['filter']['square'] = $_GET['square']; }
+
+	print_r(
+		json_encode(
+			getLocationPlans(
+				$lang, 
+				$params
+			)
+		)
+	);
+
+	exit;
+}
+
 if (isset($_GET['form']) && $_GET['form'] == 'send_form') {
 	include  __DIR__ . '/app/send_form.php';
 } else {

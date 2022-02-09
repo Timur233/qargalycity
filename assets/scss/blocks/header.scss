@@ -15,7 +15,7 @@
     &--sticky {
         color: $text;
         background-color: $white;
-        box-shadow: 0px 3px 12px -3px rgba(46, 46, 46, 0.25);
+        box-shadow: $box-shadow;
 
         .main-header__content {
             padding: spacer(4) 0;

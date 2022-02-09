@@ -1,0 +1,20 @@
+.advantages {
+    &__info {
+        padding-right: spacer(16);
+    }
+
+    &__right {
+        margin-top: spacer(12);
+    }
+
+    &__item {
+        padding: spacer(6);
+        margin: 0 spacer(2) spacer(4);
+        border-radius: softer(7);
+        box-shadow: $box-shadow;
+    }
+
+    &__img {
+        margin-bottom: spacer(7);
+    }
+}

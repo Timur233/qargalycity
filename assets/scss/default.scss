@@ -31,6 +31,10 @@ body {
         display: flex;
         position: relative;
         gap: spacer(6);
-        margin-bottom: spacer(5);
+        //margin-bottom: spacer(5);
     }
+}
+
+.swiper-wrapper {
+    height: auto;
 }

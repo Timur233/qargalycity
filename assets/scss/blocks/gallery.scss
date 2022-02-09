@@ -1,3 +1,12 @@
+@mixin swiper-control {
+    color: $orange;
+    position: relative;
+
+    &::after {
+        font-size: 32px;
+    }
+}
+
 .main-gallery {
     &__item {
         width: auto;
@@ -31,12 +40,7 @@
     }
 
     &__controll {
-        color: $orange;
-        position: relative;
-
-        &::after {
-            font-size: 32px;
-        }
+        @include swiper-control;
     }
 }
 

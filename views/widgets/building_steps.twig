@@ -1,12 +1,14 @@
-<section id="buildingSteps" class="building-steps pb-6 pt-6 bg-light">
+<section id="building-steps" class="building-steps section">
     <div class="container">
-        <h2 class="section-title section-title--green">
-            <span class="section-title__aplet section-title__aplet--light">{{ steps_title }}</span>
-        </h2>
-    </div>
+        <div class="section-title">
+            <h2 class="section-title__h2">Ход строительства</h2>
+            <div class="section-title__control">
+                <div class="swiper-button-prev building-steps__controll"></div>
+                <div class="swiper-button-next building-steps__controll"></div>
+            </div>
+        </div>
 
-    <div class="container">
-        <div class="steps-swiper swiper-container">
+        <div class="building-steps__swiper swiper-container">
             <div class="swiper-wrapper">
                 {% for item in steps_items %}
                     <div 
@@ -26,8 +28,6 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
         </div>
     </div>
 </section>

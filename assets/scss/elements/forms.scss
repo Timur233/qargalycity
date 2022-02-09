@@ -1,0 +1,13 @@
+.input-group {
+    &__input {
+        width: 100%;
+        padding: spacer(2) spacer(3);
+        font-size: 18px;
+        line-height: 30px;
+        border-radius: 6px;
+        
+        &::placeholder {
+            color: $text-gray-dark;
+        }
+    }
+}
