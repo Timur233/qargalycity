@@ -1,10 +1,10 @@
-<section id="abput-project" class="abput-project section">
+<section id="about-project" class="about-project section">
     <div class="container">
         <div class="section-title">
             <h2 class="section-title__h2">{{ about_title }}</h2>
         </div>
         <div class="flex">
-            <div class="flex__1-2">
+            <div class="flex__1-2 about-project__left">
                 <div class="about-project__desc">
                     {{ about_desc|raw }}
                 </div>
@@ -12,7 +12,7 @@
                     {{ translate["select_flat"] }}
                 </a>
             </div>
-            <div class="flex__1-2">
+            <div class="flex__1-2 about-project__right">
                 <div class="benefits flex">
                     {% for item in about_advantages %}
                         <div class="benefits__item flex__1-2">

@@ -3,22 +3,22 @@
       <div class="main-header__content">
          <div class="logo-block main-header__logos">
             <a href="https://exin.kz/" class="logo-block__link" target="_blank">
-               <img src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202628f11228logo-exin-bold.svg" class="logo-block__img" alt="Exclusive Qurylys">
-               <img src="https://cms.abpx.kz/storage/uploads/2022/02/09/620411381e38861c9645a93a2blogo-bold-1.svg" class="logo-block__img logo-block__img--dark" alt="Exclusive Qurylys">
+               <img src="https://cms.abpx.kz{{ exin_logo.path }}" class="logo-block__img" alt="Exclusive Qurylys">
+               <img src="https://cms.abpx.kz{{ exin_second_logo.path }}" class="logo-block__img logo-block__img--dark" alt="Exclusive Qurylys">
             </a>
             <a href="#" class="logo-block__link" target="_blank">
-               <img src="https://cms.abpx.kz/storage/uploads/2022/02/09/6203b8713ef7fLOGO-WHITE.svg" class="logo-block__img" alt="Exclusive Qurylys">
-               <img src="https://cms.abpx.kz/storage/uploads/2022/02/09/6203b8713ada0LOGO-DARK.svg" class="logo-block__img logo-block__img--dark" alt="Exclusive Qurylys">
+               <img src="https://cms.abpx.kz{{ site_logo.path }}" class="logo-block__img" alt="Qargaly City">
+               <img src="https://cms.abpx.kz{{ site_second_logo.path }}" class="logo-block__img logo-block__img--dark" alt="Qargaly City">
             </a>
          </div>
          <div class="navigate main-header__navigate">
             <nav class="navigate__block">
-               <a href="#abput-project" class="navigate__link">О проекте</a>
-               <a href="#gallery" class="navigate__link">Галерея</a>
-               <a href="#advantages" class="navigate__link">Преимущества</a>
-               <a href="#locations" class="navigate__link">Выбор квартиры</a>
-               <a href="#building-steps" class="navigate__link">Ход строительства</a>
-               <a href="#map" class="navigate__link">Карта</a>
+               <a href="#about-project" class="navigate__link">{{ translate['about_of_project'] }}</a>
+               <a href="#gallery" class="navigate__link">{{ translate['gallery'] }}</a>
+               <a href="#advantages" class="navigate__link">{{ translate['advantages'] }}</a>
+               <a href="#locations" class="navigate__link">{{ translate['select_location'] }}</a>
+               <a href="#building-steps" class="navigate__link">{{ translate['building_steps'] }}</a>
+               <a href="#map" class="navigate__link">{{ translate['map'] }}</a>
             </nav>
          </div>
          <div class="main-contact main-header__contact">
@@ -37,88 +37,3 @@
       </div>
    </div>
 </header>
-
-
-
-
-
-{# <header class="main-header align-items-center w-100" style="z-index: 999">
-   <div class="container">
-      <div class="row">
-         <div class="col d-flex">
-            <div class="logo-block">
-               <a href="#home">
-                  <img class="logo-block__image" src="https://cms.abpx.kz{{ site_logo.path }}" alt="">
-                </a>
-            </div>
-         </div>
-         <div class="col-xl-8 col-xxl-8 pe-4 d-none d-xl-flex align-items-center justify-content-end">
-            <ul class="nav-menu left text-xxl-end text-xl-center">
-               <li class="active">
-                  <a href="#about">
-                  {{ translate['about_of_project'] }}
-                  </a>
-               </li>
-               <li>
-                  <a href="#flats">
-                  {{ translate['flats'] }}
-                  </a>
-               </li>
-               <li>
-                  <a href="#map">
-                  {{ translate['infrastructure'] }}
-                  </a>
-               </li>
-               <li>
-                  <a href="#gallery">
-                  {{ translate['gallery'] }}
-                  </a>
-               </li>
-               <li>
-                  <a href="#buildingSteps">
-                  {{ translate['building_steps'] }}
-                  </a>
-               </li>
-               <li class="ms-4">
-                  {% if lang == 'ru' %}
-                     {% set langView = 'kk' %}
-                     {% set langSelector = 'kz' %}
-                  {% else %}
-                     {% set langView = 'ru' %}
-                     {% set langSelector = 'ru' %}
-                  {% endif %}
-                  <a 
-                     href="?lang={{ langView }}" 
-                     class="lang-switcher__item"
-                  >
-                     <i class="fas fa-globe-americas"></i>
-                     {{ langSelector }}
-                  </a>
-               </li>
-            </ul>
-         </div>
-         <div class="col d-flex align-items-center justify-content-end">
-
-            <!-- Contact Block -->
-            <div class="contact-block d-none d-sm-inline-block">
-               <a href="tel:{{site_phone}}" class="contact-block__phone">{{site_phone}}</a>
-               <a href="" class="d-none d-lg-inline-block btn btn-gradient contact-block__callback-btn" data-bs-toggle="modal" data-bs-target="#callbackModal">{{ translate['leave_a_request'] }}</a>
-            </div>
-
-            <!-- Mobile Phone Number -->
-            <a href="#" class="mobile-phone-data d-block d-sm-none ps-3" onclick="let phoneNumber = document.querySelector('.contact-block__phone').textContent; window.location.href = 'tel:' + phoneNumber">
-            <i class="fas fa-phone"></i>
-            </a>
-
-            <!-- Open Sidebar -->
-            <a href="#" id="sidebarToggle" class="d-inline-block d-xl-none ps-3" onclick="frontend.sidebar(this.getAttribute('condition')); return false">
-               <svg class="ham hamRotate180 ham5" viewBox="0 0 100 100" width="80" style="width: 50px;">
-                  <path class="line top" d="m 10,33 h 40 c 0,0 8.5,-0.68551 8.5,10.375 0,8.292653 -6.122707,9.002293 -8.5,6.625 l -11.071429,-11.071429"></path>
-                  <path class="line middle" d="m 70,50 h -40"></path>
-                  <path class="line bottom" d="m 10,67 h 40 c 0,0 8.5,0.68551 8.5,-10.375 0,-8.292653 -6.122707,-9.002293 -8.5,-6.625 l -11.071429,11.071429"></path>
-               </svg>
-            </a>
-         </div>
-      </div>
-   </div>
-</header> #}

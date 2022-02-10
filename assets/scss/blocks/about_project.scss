@@ -19,11 +19,29 @@
             }
         }
     }
+
+    &__left {
+        @media (max-width: 830px) {
+            width: 100%;
+            margin-bottom: spacer(10);
+        }
+    }
+
+    &__right {
+        @media (max-width: 830px) {
+            width: 100%;
+        }
+    }
 }
 
 .benefits {
     padding-left: spacer(15);
     padding-top: spacer(2);
+
+    @media (max-width: 830px) {
+        padding-left: spacer(0);
+        padding-top: spacer(0);
+    }
     
     &__item {
         display: flex;
