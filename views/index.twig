@@ -823,12 +823,14 @@
         }
 
         const renderOffers = (locations) => {
-          const parent = document.querySelector('.locations-result__carousel>.swiper-wrapper');
+          const parent = document.querySelector('.locations__result');
+          let html = '';
 
-          parent.innerHTML = '';
+          html += `<div class="locations-result__carousel swiper-locations">
+                                <div class="swiper-wrapper">`;
 
           locations.forEach(location => {
-            parent.innerHTML += `
+            html += `
               <div class="locations-result__item swiper-slide">
                 <div class="flex location">
                   <div class="flex__1-2 location__info">
@@ -854,6 +856,13 @@
               </div>`
             ;
           });
+
+          html += `</div>
+                  <div class="swiper-button-next locations--controll"></div>
+                  <div class="swiper-button-prev locations--controll"></div>
+                </div>`;
+
+          parent.innerHTML = html;
 
           startNewSwiper();
           
@@ -895,16 +904,14 @@
               btn.textContent = room + ' Комнатные';
               btn.setAttribute('data-filter', room);
 
-              btn.addEventListener('click', () => {
-                const active = btnsGroup.querySelector('active');
+              btn.addEventListener('click', (e) => {
 
-                if (active) {
-                  active.classList.remove('active');
+                if (btn.classList.contains('active')) {
+                  filterParams.rooms = null;
+                } else {
+                  filterParams.rooms = room;
                 }
 
-                btn.classList.add('bactive');
-
-                filterParams.rooms = room;
                 filterParams.floor = null;
                 filterParams.square = null;
                 
@@ -940,18 +947,17 @@
               btn.setAttribute('data-filter', floor);
 
               btn.addEventListener('click', () => {
-                const active = btnsGroup.querySelector('active');
 
-                if (active) {
-                  active.classList.remove('active');
+                if (btn.classList.contains('active')) {
+                  filterParams.floor = null;
+                } else {
+                  filterParams.floor = floor;
                 }
 
-                btn.classList.add('active');
-
-                filterParams.floor = floor;
                 filterParams.square = null;
 
                 updateFilter();
+
               });
 
               btnsGroup.appendChild(btn);
@@ -983,15 +989,12 @@
               btn.setAttribute('data-filter', square);
 
               btn.addEventListener('click', () => {
-                const active = btnsGroup.querySelector('active');
-
-                if (active) {
-                  active.classList.remove('active');
+                if (btn.classList.contains('active')) {
+                  filterParams.square = null;
+                } else {
+                  filterParams.square = square;
                 }
 
-                btn.classList.add('active');
-
-                filterParams.square = square;
                 updateFilter();
               });
 

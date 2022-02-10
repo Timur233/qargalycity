@@ -1,4 +1,25 @@
-.abput-project {}
+.about-project {
+    &__desc {
+        & ul {
+            list-style: none;
+
+            &>li {
+                position: relative;
+            
+                &:before {
+                    content: '';
+                    position: absolute;
+                    width: 12px;
+                    height: 2px;
+                    top: 50%;
+                    left: spacer(-6);
+                    margin-top: -2px;
+                    background-color: $orange;
+                }
+            }
+        }
+    }
+}
 
 .benefits {
     padding-left: spacer(15);

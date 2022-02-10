@@ -25,7 +25,8 @@ body {
 
 ol,
 ul {
-  list-style: none; }
+  list-style: none;
+  padding-left: spacer(7); }
 
 * {
   box-sizing: border-box; }
@@ -291,6 +292,20 @@ body {
     font-weight: 200;
     color: #ffffff; }
 
+.about-project__desc ul {
+  list-style: none; }
+  .about-project__desc ul > li {
+    position: relative; }
+    .about-project__desc ul > li:before {
+      content: '';
+      position: absolute;
+      width: 12px;
+      height: 2px;
+      top: 50%;
+      left: -24px;
+      margin-top: -2px;
+      background-color: #F5A014; }
+
 .benefits {
   padding-left: 60px;
   padding-top: 8px; }
@@ -469,7 +484,8 @@ body {
   .filter-group__btn:hover {
     color: #ffffff; }
   .filter-group__btn:not(:last-child) {
-    margin-right: 8px; }
+    margin-right: 8px;
+    margin-bottom: 8px; }
 
 .locations-result__carousel {
   position: relative;
