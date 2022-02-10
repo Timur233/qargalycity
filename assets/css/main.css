@@ -513,3 +513,22 @@ body {
   .location__img {
     max-width: 100%;
     min-height: 300px; }
+
+.map__informer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  gap: 16px;
+  padding: 32px 0; }
+
+.map-informer__item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center; }
+
+.map-informer__img {
+  margin-right: 4px; }
+
+.map-informer__text {
+  margin-left: 4px; }

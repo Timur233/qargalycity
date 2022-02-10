@@ -1,0 +1,29 @@
+.map {
+    &__informer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+        gap: spacer(4);
+        padding: spacer(8) 0;
+
+    }
+    
+}
+
+.map-informer {
+    
+    &__item {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    &__img {
+        margin-right: spacer(1);
+    }
+
+    &__text {
+        margin-left: spacer(1);
+    }
+}
