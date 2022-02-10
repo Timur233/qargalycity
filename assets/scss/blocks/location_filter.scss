@@ -3,12 +3,22 @@
         display: flex;
         flex-direction: column;
         padding-right: spacer(10);
+
+        @media (max-width: 830px) {
+            padding-right: 0;
+        }
     }
 
     &--controll {
         &::after {
             font-size: 32px;
             color: $orange;
+        }
+    }
+
+    & .flex__1-2 {
+        @media (max-width: 830px) {
+            width: 100%;
         }
     }
 }
@@ -84,6 +94,10 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        
+        @media (max-width: 830px) {
+            margin-bottom: spacer(8);
+        }
     }
 
     &__title {
@@ -92,6 +106,10 @@
 
     &__square {
         font-size: 16px;
+
+        @media (max-width: 830px) {
+            margin-top: 0;
+        }
     }
 
     &__download {

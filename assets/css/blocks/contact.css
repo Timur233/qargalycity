@@ -10,6 +10,10 @@
   display: flex;
   flex-wrap: nowrap;
   align-items: center; }
+  @media (max-width: 830px) {
+    .map-informer__item {
+      width: 45%;
+      flex: 0 0 auto; } }
 
 .map-informer__img {
   margin-right: spacer(1); }

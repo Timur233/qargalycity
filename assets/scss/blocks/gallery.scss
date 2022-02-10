@@ -4,6 +4,10 @@
 
     &::after {
         font-size: 32px;
+
+        @media (max-width: 830px) {
+            font-size: 26px;
+        }
     }
 }
 
@@ -37,6 +41,10 @@
         display: inline-block;
         height: 400px;
         border-radius: softer(3);
+
+        @media (max-width: 830px) {
+            height: 220px;
+        }
     }
 
     &__controll {
