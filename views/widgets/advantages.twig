@@ -3,32 +3,32 @@
         <div class="flex flex--v-center">
             <div class="flex__1-3 advantages__info">
                 <div class="section-title">
-                    <h2 class="section-title__h2">Парк, арбат, дом - все в одном </h2>
+                    <h2 class="section-title__h2">{{ advantages_title }}</h2>
                 </div>
-                <p>35.5% всей территории комплекса занимает парковая зона и благоустроенная территория возле реки Каргалы. Здесь каждый найдет что-то свое, что важно для него и для его семьи. </p>
+                {{ advantages_desc|raw }}
             </div>
             <div class="flex__1-3 advantages__left">
                 <div class="advantages__item">
-                    <img class="advantages__img" src="https://cms.abpx.kz/storage/uploads/2022/02/09/6203428ceff4fbike-svgrepo-com-1-1.svg" alt="Icon">
-                    <h4 class="advantages__title">Пешеходные и велосипедные дорожки</h4>
-                    <p>спроектированы с учетом навигации пешеходов, таким образом обеспечивает безопасное, комфортное и увлекательное передвижения.</p>
+                    <img class="advantages__img" src="https://cms.abpx.kz{{ advantages_items[0].children[0].settings.image.path }}" alt="{{ advantages_items[0].children[1].settings.text }}">
+                    <h4 class="advantages__title">{{ advantages_items[0].children[1].settings.text }}</h4>
+                    {{ advantages_items[0].children[2].settings.text|raw }}
                 </div>
                 <div class="advantages__item">
-                    <img class="advantages__img" src="https://cms.abpx.kz/storage/uploads/2022/02/09/6203428d0e294kindergarten-svgrepo-com-1.svg" alt="Icon">
-                    <h4 class="advantages__title">Двор-сад с продуманным ландшафтным дизайном</h4>
-                    <p>уединённость и мобильность, закрытая территория и полная свобода действий, естественность от природы и продуманные решения. </p>
+                    <img class="advantages__img" src="https://cms.abpx.kz{{ advantages_items[1].children[0].settings.image.path }}" alt="{{ advantages_items[1].children[1].settings.text }}">
+                    <h4 class="advantages__title">{{ advantages_items[1].children[1].settings.text }}</h4>
+                    {{ advantages_items[1].children[2].settings.text|raw }}
                 </div>
             </div>
             <div class="flex__1-3 advantages__right">
                 <div class="advantages__item">
-                    <img class="advantages__img" src="https://cms.abpx.kz/storage/uploads/2022/02/09/6203428d0ad0bGroup.svg" alt="Icon">
-                    <h4 class="advantages__title">Обустроенные детские и спортивные площадки</h4>
-                    <p>одним из основных преимуществ комплекса является благоустройство дворовых территорий и безопасность детских площадок.</p>
+                    <img class="advantages__img" src="https://cms.abpx.kz{{ advantages_items[2].children[0].settings.image.path }}" alt="{{ advantages_items[2].children[1].settings.text }}">
+                    <h4 class="advantages__title">{{ advantages_items[2].children[1].settings.text }}</h4>
+                    {{ advantages_items[2].children[2].settings.text|raw }}
                 </div>
                 <div class="advantages__item">
-                    <img class="advantages__img" src="https://cms.abpx.kz/storage/uploads/2022/02/09/6203428d01b76fountain-svgrepo-com-1.svg" alt="Icon">
-                    <h4 class="advantages__title">Свой «Арбат» с площадками отдыха</h4>
-                    <p>Все члены семьи найдут что-то для себя: жильцы смогут отдохнуть после трудового дня и собраться за дружеской беседой, дети – развлечения на свежем воздухе.</p>
+                    <img class="advantages__img" src="https://cms.abpx.kz{{ advantages_items[3].children[0].settings.image.path }}" alt="{{ advantages_items[3].children[1].settings.text }}">
+                    <h4 class="advantages__title">{{ advantages_items[3].children[1].settings.text }}</h4>
+                    {{ advantages_items[3].children[2].settings.text|raw }}
                 </div>
             </div>
         </div>

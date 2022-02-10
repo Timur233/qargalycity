@@ -3,91 +3,26 @@
         <div class="flex">
             <div class="flex__1-2">
                 <div class="section-title">
-                    <h2 class="section-title__h2">Парк, арбат, дом - все в одном </h2>
+                    <h2 class="section-title__h2">{{ about_title }}</h2>
                 </div>
                 <div class="about-project__desc">
-                    <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-                    </p>
-                    <p>
-                        It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset shee
-                    </p>
+                    {{ about_desc|raw }}
                 </div>
                 <a href="#locations" class="btn btn--gradient">
-                    Выбрать квартиру
+                    {{ translate["select_flat"] }}
                 </a>
             </div>
             <div class="flex__1-2">
                 <div class="benefits flex">
-                    <div class="benefits__item flex__1-2">
-                        <img src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202b9f379c51Stone.svg" alt="#" class="benefits__img">
-                        <strong class="benefits__title">Технология строительства</strong>
-                        <span class="benefits__info">Монолитная</span>
-                    </div>
-                    <div class="benefits__item flex__1-2">
-                        <img src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202b9f38fcffVector-2-Stroke.svg" alt="#" class="benefits__img">
-                        <strong class="benefits__title">Ландшафтный дизайн</strong>
-                        <span class="benefits__info">4 га парковой зоны</span>
-                    </div>
-                    <div class="benefits__item flex__1-2">
-                        <img src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202b9f36a7bdGroup-9.svg" alt="#" class="benefits__img">
-                        <strong class="benefits__title">Развитая инфраструктура</strong>
-                        <span class="benefits__info">Все необходимое рядом</span>
-                    </div>
-                    <div class="benefits__item flex__1-2">
-                        <img src="https://cms.abpx.kz/storage/uploads/2022/02/08/6202b9f3588bdGroup-8.svg" alt="#" class="benefits__img">
-                        <strong class="benefits__title">Территория комфорта</strong>
-                        <span class="benefits__info">отделная зона парковки</span>
-                    </div>
+                    {% for item in about_advantages %}
+                        <div class="benefits__item flex__1-2">
+                            <img src="https://cms.abpx.kz{{ item.children[0].settings.image.path }}" alt="#" class="benefits__img">
+                            <strong class="benefits__title">{{ item.children[1].settings.text }}</strong>
+                            <span class="benefits__info">{{ item.children[1].settings.text }}</span>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- <section id="about" class="about pb-5 pt-6">
-    <div class="container">
-        <h2 class="section-title">
-            <span class="section-title__aplet">{{ about_title }}</span>
-        </h2>
-        <div class="row">
-            <div class="col-md-4 about__info">
-                <h4 class="about__title">{{ about_subtitle }}</h4>
-                <div class="about__desc">
-                    {{ about_desc|raw }}
-                </div>
-            </div>
-            <div class="col-md-4 advantages p-4 p-sm-5">
-                <h5 class="advantages__title">
-                    {{ about_advantages_title }}
-                </h5>
-                <div class="advantages__items">
-                    {% for item in about_advantages %}
-                        <div class="advantages__item">
-                            <img 
-                                src="https://cms.abpx.kz/{{ item.path }}" 
-                                alt="{{ item.meta.title }}"
-                            >
-                            <span class="advantages__text">
-                                {{ item.meta.title }}
-                            </span>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <img 
-                    src="https://cms.abpx.kz/{{ about_image.path }}" 
-                    alt="{{ about_subtitle }}"
-                    class="about__image"
-                >
-                <a class="download-link" target="_blank" href="https://cms.abpx.kz/{{ about_presintation }}">
-                    <img 
-                        src="https://cms.abpx.kz/storage/uploads/2021/12/24/61c557eadd860-.svg" 
-                        alt="{{ translate['download-press'] }}"
-                    >
-                    <span>{{ translate['download-press']|raw }}</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</section> -->

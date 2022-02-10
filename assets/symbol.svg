@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+    <symbol id="icon-phone" fill="none" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M1.018 4.75L1 4.698C.595 3.538.25 1.952.25 1 .25.588.588.25 1 .25h2.25a1.5 1.5 0 0 1 1.5 1.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-.628a12.04 12.04 0 0 0 6.628 6.628v-.628a1.5 1.5 0 0 1 1.5-1.5h1.5a1.5 1.5 0 0 1 1.5 1.5V13c0 .338-.412.75-.75.75-1.294 0-2.58-.342-3.75-.75a13.611 13.611 0 0 1-8.232-8.25z" fill="#fff"/>
+    </symbol>
+
+</svg>

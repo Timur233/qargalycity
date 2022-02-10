@@ -1,46 +1,8 @@
-<section id="home" class="main-slider">
+<section id="home" class="main-slider" style="background-image: url('https://cms.abpx.kz{{ slider_image_bg.path }}');">
     <div class="main-slider__shadow"></div>
     <div class="main-slider__content slider-content">
         <div class="container-fluid">
-            <h1 class="slider-content__title">Парк, арбат, дом - все в одном</h1>
+            <h1 class="slider-content__title">{{ slider_title }}</h1>
         </div>
     </div>
 </section>
-
-{# 
-
-<section id="home" class="slider parallax mt-6" style="background-image: url('https://cms.abpx.kz{{ slider_image_bg.path }}')">
-    <div class="parallax__layer parallax__layer--back-house" style="background-image: url('https://cms.abpx.kz{{ slider_house_bg.path }}')" data-duration="70" data-speed="0.5"></div>
-    <div class="parallax__layer parallax__layer--main-house" style="background-image: url('https://cms.abpx.kz{{ slider_house.path }}')" data-duration="0" data-speed="1.5"></div>
-    <div class="parallax__layer parallax__layer--decor-second" style="background-image: url('https://cms.abpx.kz{{ slider_decor.path }}')" data-duration="10" data-speed="1"></div>
-    <div class="parallax__layer parallax__layer--decor-first" style="background-image: url('https://cms.abpx.kz{{ slider_decor_two.path }}')" data-duration="30" data-speed="0.5"></div>
-    <div class="container position-relative d-flex align-items-center px-3 px-md-5">
-        <div class="section-slider-content">
-            <div class="row">
-                <div class="me-auto col-xxl-5 col-xl-5 col-lg-7 col-md-12 px-sm-0 px-md-5 text-left slider-info">
-                    <h1>{{ slider_title|raw }}</h1>
-                    <div class="button-flats pt-2 pb-5">
-                        <a href="#flats" class="btn btn-white">
-                            {{ translate['see_a_flats'] }}
-                            <svg width="26" height="16" class="ms-2" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M25.707 8.707a1 1 0 000-1.414L19.343.929a1 1 0 10-1.414 1.414L23.586 8l-5.657 5.657a1 1 0 001.414 1.414l6.364-6.364zM0 9h25V7H0v2z" fill="#56aa2e"></path></svg>
-                        </a>
-                    </div>
-                    <div class="promo-form">
-                        <h5 class="promo-form__title">Оставьте заявку, <br>Мы вам перезвоним</h5>
-                        <form class="mb-0" action="">
-                            <div class="mb-3">
-                                <input type="text" class="form-control promo-form__input" id="staticFormName" name="name" placeholder="Имя" fieldname="Имя">
-                            </div>
-                            <div class="mb-3">
-                                <input type="text" class="form-control promo-form__input" id="staticFormPhone" name="phone" placeholder="Телефон" fieldname="Телефон" required="required">
-                            </div>
-                            <div class="d-inline-block">
-                                <a href="#" class="btn btn-white float-start sendFormButton px-4" onclick="frontend.form(this); return false">Отправить</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> #}
