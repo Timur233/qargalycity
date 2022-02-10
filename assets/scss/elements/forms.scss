@@ -1,4 +1,6 @@
 .input-group {
+    position: relative;
+
     &__input {
         width: 100%;
         padding: spacer(2) spacer(3);
@@ -9,5 +11,31 @@
         &::placeholder {
             color: $text-gray-dark;
         }
+    }
+}
+
+.input-err {
+    position: absolute;
+    background: $orange;
+    padding: 8px 10px;
+    left: 0;
+    right: spacer(4);
+    top: spacer(10);
+    display: inline-flex;
+    border-radius: 4px;
+    margin-top: 15px;
+    line-height: 1.2;
+    font-size: 16px;
+    width: 100%;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: $orange; 
+        top: -5px;
+        left: 15px;
+        transform: rotate(45deg);
     }
 }

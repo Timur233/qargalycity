@@ -7,11 +7,6 @@
     <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
     <link rel="stylesheet" href="assets/css/swiper.min.css" />
     <link rel="stylesheet" href="assets/css/main.css?v=2">
-    {# <link rel="stylesheet" href="assets/css/bootstrap.css?v=5" />
-    <link rel="stylesheet" href="assets/css/libs/animate.css">
-    <link rel="stylesheet" href="assets/css/all.min.css" />
-    <link rel="stylesheet" href="assets/css/style.css?v=28" />
-    <link rel="stylesheet" href="assets/css/new-styles.css" /> #}
 
     {{ site_scripts_in_head|raw }}
   
@@ -101,7 +96,7 @@
 
     {{ include('widgets/footer.twig') }}
 
-    {# <!-- Modal -->
+    <!-- Modal -->
     <div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -127,7 +122,7 @@
       </div>
     </div>
 
-    <!-- Fixed Button -->
+    {# <!-- Fixed Button -->
     <div class="fixed-callback">
       <a href="#" class="fix-button" data-bs-toggle="modal" data-bs-target="#callbackModal">
         <i class="fas fa-phone"></i>
@@ -733,9 +728,9 @@
                       <a class="location__download" data-fancybox data-caption="${location.rooms} комнатная" href="https://cms.abpx.kz${location.plan.path}">
                         Скачать планировку
                       </a>
-                      <button class="btn location__btn">
+                      <a href="#callback" class="btn location__btn">
                         Оставить заявку
-                      </button>
+                      </a>
                     </div>
                   </div>
                   <div class="flex__1-2 location__img-block">
