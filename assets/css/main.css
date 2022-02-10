@@ -209,6 +209,8 @@ body {
       display: none; }
       .main-header--sticky .logo-block__img--dark {
         display: inline-block; }
+    .main-header--sticky .main-contact__phone-icon {
+      filter: invert(0.8); }
   .main-header__logos {
     margin-right: auto; }
   .main-header__navigate {
@@ -255,6 +257,11 @@ body {
 .main-contact__phone {
   font-size: 18px;
   margin-bottom: 8px; }
+
+.main-contact__phone-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px; }
 
 .main-slider {
   display: flex;

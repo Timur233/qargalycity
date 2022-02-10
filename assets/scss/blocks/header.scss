@@ -33,6 +33,10 @@
                 display: inline-block;
             }
         }
+
+        & .main-contact__phone-icon {
+            filter: invert(.8);
+        }
     }
 
     &__logos {
@@ -105,5 +109,11 @@
     &__phone {
         font-size: 18px;
         margin-bottom: spacer(2);
+    }
+
+    &__phone-icon {
+        width: 16px;
+        height: 16px;
+        margin-right: spacer(1);
     }
 }
