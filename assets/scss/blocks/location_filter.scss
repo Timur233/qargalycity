@@ -84,6 +84,10 @@
 
     &__item {
         padding: spacer(10);
+
+        @media (max-width: 830px) {
+            padding: spacer(6);
+        }
     }
 }
 

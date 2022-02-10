@@ -4,6 +4,8 @@
 
         @media (max-width: 830px) {
             width: 100%;
+            padding-right: spacer(0);
+            margin-bottom: spacer(4);
         }
     }
 
@@ -28,12 +30,24 @@
         border-radius: softer(7);
         box-shadow: $box-shadow;
 
+        & p {
+            @media (max-width: 830px) {
+                margin-bottom: 0px;
+            }
+        }
+
         @media (max-width: 830px) {
             margin: 0 0 spacer(6);
+            padding: spacer(4);
         }
     }
 
     &__img {
         margin-bottom: spacer(7);
+        
+        @media (max-width: 830px) {
+            width: 68px;
+            margin-bottom: spacer(4);
+        }
     }
 }
