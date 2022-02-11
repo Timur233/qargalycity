@@ -50,6 +50,7 @@
         margin-bottom: spacer(7);
 
         @media (max-width: 830px) {
+            padding: 0 spacer(5);
             text-align: center;
         }
     }

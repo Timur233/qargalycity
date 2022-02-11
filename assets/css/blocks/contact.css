@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  gap: spacer(4);
   padding: spacer(8) 0; }
 
 .map-informer__item {
@@ -12,8 +11,10 @@
   align-items: center; }
   @media (max-width: 830px) {
     .map-informer__item {
-      width: 45%;
-      flex: 0 0 auto; } }
+      width: 50%;
+      flex: 0 0 auto;
+      margin-bottom: spacer(4);
+      padding-right: spacer(2); } }
 
 .map-informer__img {
   margin-right: spacer(1); }

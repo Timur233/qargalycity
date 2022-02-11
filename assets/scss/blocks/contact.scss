@@ -4,7 +4,6 @@
         flex-wrap: wrap;
         justify-content: space-between;
         width: 100%;
-        gap: spacer(4);
         padding: spacer(8) 0;
 
     }
@@ -19,8 +18,10 @@
         align-items: center;
 
         @media (max-width: 830px) {
-            width: 45%;
+            width: 50%;
             flex: 0 0 auto;
+            margin-bottom: spacer(4);
+            padding-right: spacer(2);
         }
     }
 

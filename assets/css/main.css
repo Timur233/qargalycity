@@ -33,6 +33,9 @@ body {
   line-height: 1;
   margin: 0; }
 
+p {
+  margin-top: 0; }
+
 ol,
 ul {
   list-style: none;
@@ -89,6 +92,9 @@ body {
   font-size: 18px;
   line-height: 1.4;
   color: #2C1F3D; }
+  @media (max-width: 830px) {
+    body {
+      font-size: 16px; } }
 
 .section {
   padding: 96px 0; }
@@ -445,6 +451,7 @@ body {
     margin-bottom: 28px; }
     @media (max-width: 830px) {
       .benefits__item {
+        padding: 0 20px;
         text-align: center; } }
   .benefits__img {
     margin-bottom: 16px; }
@@ -731,7 +738,6 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 100%;
-  gap: 16px;
   padding: 32px 0; }
 
 .map-informer__item {
@@ -740,8 +746,10 @@ body {
   align-items: center; }
   @media (max-width: 830px) {
     .map-informer__item {
-      width: 45%;
-      flex: 0 0 auto; } }
+      width: 50%;
+      flex: 0 0 auto;
+      margin-bottom: 16px;
+      padding-right: 8px; } }
 
 .map-informer__img {
   margin-right: 4px; }
