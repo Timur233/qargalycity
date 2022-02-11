@@ -89,9 +89,6 @@ body {
   font-size: 18px;
   line-height: 1.4;
   color: #2C1F3D; }
-  @media (max-width: 830px) {
-    body {
-      font-size: 16px; } }
 
 .section {
   padding: 96px 0; }
