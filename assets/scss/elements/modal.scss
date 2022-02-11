@@ -1,7 +1,10 @@
 .modal {
     position: relative;
-    display: none;
     z-index: 15;
+
+    &--hidden {
+        display: none;
+    }
 
     &__dialog {
         max-width: 100%;
@@ -14,12 +17,13 @@
             transform: translate(-50%, -50%);
         }
 
-        z-index: 15; 
+        z-index: 1; 
     }
 
     &__content {
         position: relative;
         padding: spacer(8) spacer(10);
+        margin: spacer(4);
         border-radius: softer(6);
         background-color: $white;
     }
@@ -29,5 +33,32 @@
         font-size: 24px;
         font-weight: 400;
         line-height: 1;
+    }
+
+    &__btn-close {
+        position: absolute;
+        padding: spacer(2);
+        right: spacer(4);
+        top: spacer(4);
+        border-radius: softer(4);
+        cursor: pointer;
+        background: none;
+        border: none;
+        box-shadow: none;
+        outline: none;
+    }
+
+    &__icon-close {
+        width: 16px;
+        height: 16px;
+    }
+
+    &__shadow {
+        position: fixed;
+        
+        @include cover-position;
+
+        background: $black;
+        opacity: .7;
     }
 }

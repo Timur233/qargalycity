@@ -330,6 +330,8 @@
           if (op <= 0.1){
             clearInterval(timer);
             element.style.display = 'none';
+          } else if (op >= 1) {
+            
           }
           element.style.opacity = op;
           element.style.filter = 'alpha(opacity=' + op * 100 + ")";
@@ -701,12 +703,12 @@
                       <p class="location__square">Площадь: <b>${location.square} м<sup>2</sup></b></p>
                     </div>
                     <div class="location__btn-group">
-                      <a class="location__download" data-fancybox data-caption="${location.rooms} комнатная" href="https://cms.abpx.kz${location.plan.path}">
+                      <a class="location__download" href="https://cms.abpx.kz${location.plan.path}">
                         Скачать планировку
                       </a>
-                      <a href="#callback" class="btn location__btn">
+                      <button class="btn location__btn" onclick="frontend.modal(this)" data-modal="#callback-modal">
                         Оставить заявку
-                      </a>
+                      </button>
                     </div>
                   </div>
                   <div class="flex__1-2 location__img-block">
@@ -1111,11 +1113,34 @@
         });
       }
       
+      function modal() {
+        const buttons = document.querySelectorAll('[data-modal]');
+
+        buttons.forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const modal = document.querySelector(btn.getAttribute('data-modal'));
+
+            modal.classList.toggle('modal--hidden');
+
+            return false;
+          });
+        });
+      }
+
+      function toggleModal(btn) {
+        const modal = document.querySelector(btn.getAttribute('data-modal'));
+
+        modal.classList.toggle('modal--hidden');
+        
+        return false;
+      }
+
       function frontendReady() {
         authorMarker();
         buildingStepsCarousel();
         galleryCarousel();
         // closePreloader();
+        modal();
         phoneValidator();
         headerMenuLinks();
       }
@@ -1180,7 +1205,8 @@
         form: formValidator,
         ready: frontendReady,
         resize: frontendResize,
-        scroll: frontendScroll
+        scroll: frontendScroll,
+        modal: toggleModal
       }
 
     })();
@@ -1188,10 +1214,6 @@
   	document.addEventListener("DOMContentLoaded", ()=>{ frontend.ready() });
   	window.addEventListener("resize", ()=>{ frontend.resize() });
   	document.addEventListener("scroll", ()=>{ frontend.scroll() });
-
-    if (typeof offersAll !== "undefined") {
-        frontend.filterCreiate(offersAll);
-    }
 
   </script>
 
