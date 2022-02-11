@@ -64,6 +64,12 @@
                 margin-right: spacer(3);
             }
         }
+
+        &--exin {
+            @media (max-width: 450px) {
+                display: none;
+            }
+        }
     }
 
     &__img{
