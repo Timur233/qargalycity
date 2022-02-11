@@ -390,6 +390,7 @@ body {
   margin-right: 4px; }
 
 .main-slider {
+  position: relative;
   display: flex;
   align-items: flex-end;
   height: 100vh;
@@ -406,6 +407,9 @@ body {
   .main-slider__content {
     margin-top: auto;
     margin-bottom: 60px; }
+  @media (max-width: 830px) {
+    .main-slider {
+      height: 80vh; } }
 
 .slider-content {
   position: relative;
