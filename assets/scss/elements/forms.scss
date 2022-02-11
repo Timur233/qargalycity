@@ -39,4 +39,9 @@
         left: 15px;
         transform: rotate(45deg);
     }
+
+    @media (max-width: 830px) {
+        position: relative;
+        top: auto;
+    }
 }

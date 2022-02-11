@@ -100,7 +100,14 @@
         justify-content: space-between;
         
         @media (max-width: 830px) {
-            margin-bottom: spacer(8);
+            text-align: center;
+        }
+    }
+
+    &__img-block {
+        @media (max-width: 830px) {
+            order: -1;
+            margin-bottom: spacer(0);
         }
     }
 
