@@ -96,31 +96,7 @@
 
     {{ include('widgets/footer.twig') }}
 
-    <!-- Modal -->
-    <div class="modal fade" id="callbackModal" tabindex="-1" aria-labelledby="callbackModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-body">
-            <a href="#" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
-            <h5 class="modal-title" id="callbackModalLabel">Оставить заявку</h5>
-            <form action="">
-              <div class="mb-3">
-                <input type="text" class="form-control" id="formName" name="name" placeholder="{{ translate['name'] }}" fieldname="Имя">
-              </div>
-              <div class="mb-3">
-                <input type="text" class="form-control" id="formPhone" name="phone" placeholder="{{ translate['phone'] }}" fieldname="Телефон" required="">
-              </div>
-              <div>
-                <a href="#" class="btn btn-gradient float-start sendFormButton" onclick="frontend.form(this); return false">{{ translate['send'] }}</a>
-              </div>
-              <!--div class="preloader" style="display: none">
-                <img src="../assets/img/preloader" alt="">
-              </div-->
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+    {{ include('widgets/modal.twig') }}
 
     {# <!-- Fixed Button -->
     <div class="fixed-callback">
@@ -771,6 +747,7 @@
           (function () {
             const label = document.createElement('span');
             const btnsGroup = document.createElement('div');
+            let roomsButtons = null;
             
             label.classList = 'locations-filter__label';
             label.textContent = 'Количество комнат:';
@@ -778,7 +755,8 @@
             
             btnsGroup.classList = 'locations-filter__group filter-group';
 
-            [...rooms].forEach((room) => {
+            roomsButtons = [...rooms].sort();
+            roomsButtons.forEach((room) => {
               const btn = document.createElement('button'); 
 
               btn.classList = 'btn filter-group__btn filter-group__btn--room';
@@ -813,6 +791,7 @@
           (function () {
             const label = document.createElement('span');
             const btnsGroup = document.createElement('div');
+            let floorsButtons = null;
             
             label.classList = 'locations-filter__label';
             label.textContent = 'Этаж:';
@@ -820,7 +799,8 @@
             
             btnsGroup.classList = 'locations-filter__group filter-group';
 
-            [...floors].forEach((floor) => {
+            floorsButtons = [...floors].sort();
+            floorsButtons.forEach((floor) => {
               const btn = document.createElement('button'); 
 
               btn.classList = 'btn filter-group__btn filter-group__btn--floors';
@@ -855,6 +835,7 @@
           (function () {
             const label = document.createElement('span');
             const btnsGroup = document.createElement('div');
+            let squaresButtons = null;
             
             label.classList = 'locations-filter__label';
             label.textContent = 'Площадь:';
@@ -862,7 +843,8 @@
             
             btnsGroup.classList = 'locations-filter__group filter-group';
 
-            [...squares].forEach((square) => {
+            squaresButtons = [...squares].sort();
+            squaresButtons.forEach((square) => {
               const btn = document.createElement('button'); 
 
               btn.classList = 'btn filter-group__btn filter-group__btn--square';

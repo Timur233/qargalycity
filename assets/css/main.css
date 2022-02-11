@@ -7,7 +7,14 @@ textarea {
   border: 0;
   font: inherit;
   font-size: 100%;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  outline: none;
+  transition: box-shadow 0.24s; }
+  input:focus,
+  button:focus,
+  select:focus,
+  textarea:focus {
+    box-shadow: 0 0 0 3px rgba(57, 146, 221, 0.3); }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0px; }
@@ -29,7 +36,7 @@ body {
 ol,
 ul {
   list-style: none;
-  padding-left: spacer(7); }
+  padding-left: 28px; }
 
 * {
   box-sizing: border-box; }
@@ -193,7 +200,8 @@ body {
     padding: 8px 12px;
     font-size: 18px;
     line-height: 30px;
-    border-radius: 6px; }
+    border-radius: 6px;
+    border: 1px solid #BDBDBD; }
     .input-group__input::placeholder {
       color: #646464; }
 
@@ -219,6 +227,30 @@ body {
     top: -5px;
     left: 15px;
     transform: rotate(45deg); }
+
+.modal {
+  position: relative;
+  display: none;
+  z-index: 15; }
+  .modal__dialog {
+    max-width: 100%;
+    width: 350px;
+    position: fixed;
+    z-index: 15; }
+    .modal__dialog--center {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+  .modal__content {
+    position: relative;
+    padding: 32px 40px;
+    border-radius: 12px;
+    background-color: #ffffff; }
+  .modal__title {
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1; }
 
 .main-header {
   position: fixed;
@@ -499,6 +531,17 @@ body {
         width: auto;
         padding-top: 8px;
         padding-bottom: 8px; } }
+
+.callback__form {
+  margin-bottom: 0px; }
+
+.callback__group:not(:last-child) {
+  margin-bottom: 16px; }
+
+.callback .input-err {
+  position: relative;
+  top: auto;
+  color: #ffffff; }
 
 .building-steps__slide {
   overflow: hidden;
