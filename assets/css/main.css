@@ -733,3 +733,7 @@ body {
 
 .map-informer__text {
   margin-left: 4px; }
+
+@supports (-webkit-touch-callout: none) {
+  .callback-h {
+    background-attachment: inherit; } }
