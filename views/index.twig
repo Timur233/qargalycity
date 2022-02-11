@@ -757,7 +757,9 @@
             
             btnsGroup.classList = 'locations-filter__group filter-group';
 
-            roomsButtons = [...rooms].sort();
+            roomsButtons = [...rooms].sort((a,b) => {
+              return a - b;
+            });
             roomsButtons.forEach((room) => {
               const btn = document.createElement('button'); 
 
@@ -801,7 +803,9 @@
             
             btnsGroup.classList = 'locations-filter__group filter-group';
 
-            floorsButtons = [...floors].sort();
+            floorsButtons = [...floors].sort((a,b) => {
+              return a - b;
+            });
             floorsButtons.forEach((floor) => {
               const btn = document.createElement('button'); 
 
@@ -845,7 +849,9 @@
             
             btnsGroup.classList = 'locations-filter__group filter-group';
 
-            squaresButtons = [...squares].sort();
+            squaresButtons = [...squares].sort((a,b) => {
+              return a - b;
+            });
             squaresButtons.forEach((square) => {
               const btn = document.createElement('button'); 
 

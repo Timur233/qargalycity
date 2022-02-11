@@ -48,10 +48,19 @@
         flex-direction: column;
         align-items: flex-start;
         margin-bottom: spacer(7);
+
+        @media (max-width: 830px) {
+            text-align: center;
+        }
     }
 
     &__img {
         margin-bottom: spacer(4);
+
+        @media (max-width: 830px) {
+            display: inline-block;
+            margin: 0 auto spacer(4);
+        }
     }
 
     &__title {

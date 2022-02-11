@@ -89,6 +89,9 @@ body {
   font-size: 18px;
   line-height: 1.4;
   color: #2C1F3D; }
+  @media (max-width: 830px) {
+    body {
+      font-size: 16px; } }
 
 .section {
   padding: 96px 0; }
@@ -443,8 +446,15 @@ body {
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 28px; }
+    @media (max-width: 830px) {
+      .benefits__item {
+        text-align: center; } }
   .benefits__img {
     margin-bottom: 16px; }
+    @media (max-width: 830px) {
+      .benefits__img {
+        display: inline-block;
+        margin: 0 auto 16px; } }
   .benefits__title {
     margin-bottom: 8px; }
   .benefits__info {

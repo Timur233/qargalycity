@@ -4,6 +4,10 @@ body {
     font-size: 18px;
     line-height: 1.4;
     color: $text;
+
+    @media (max-width: 830px) {
+        font-size: 16px;
+    }
 } 
 
 .section {
