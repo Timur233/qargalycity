@@ -235,7 +235,7 @@ body {
     display: none; }
   .modal__dialog {
     max-width: 100%;
-    width: 350px;
+    width: 460px;
     position: fixed;
     z-index: 1; }
     .modal__dialog--center {
@@ -248,6 +248,9 @@ body {
     margin: 16px;
     border-radius: 12px;
     background-color: #ffffff; }
+    @media (max-width: 830px) {
+      .modal__content {
+        padding: 24px 24px; } }
   .modal__title {
     margin-bottom: 16px;
     font-size: 24px;
