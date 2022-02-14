@@ -14,65 +14,15 @@
   <body>
   {{ site_scripts_in_body|raw }}
   
-  {# <div id="shadow" onclick="frontend.sidebar('open'); return false"></div>
+  <div id="shadow" onclick="frontend.sidebar('open'); return false"></div>
 
-    <div id="preloader">
+    {# <div id="preloader">
       <div class="preloader-content">
         <img src="https://cms.abpx.kz{{ site_logo.path }}" style="width: 150px">
       </div>
-    </div>
-
-    <div class="sidebar position-fixed">
-      <nav class="p-4 text-center h-100" style="display: flex; flex-direction: column;">
-        <a href="#" class="close" onclick="frontend.sidebar('open'); return false"><span></span><span></span></a>
-        <div class="lang-switcher px-4 pb-5">
-          <a href="{% if lang != 'ru' %}?lang=ru{% else %}#{% endif %} " class="lang-switcher__item {% if lang == 'ru' %}lang-switcher__item-active{% endif %}">RUS</a>
-          <a href="{% if lang != 'kk' %}?lang=kk{% else %}#{% endif %}" class="lang-switcher__item {% if lang == 'kk' %}lang-switcher__item-active{% endif %}">KZ</a>
-        </div>
-        <ul>
-          <li>
-            <a href="#about" onclick="frontend.sidebar('open');">{{ translate['about_of_project'] }}</a>
-          </li>
-          <li>
-            <a href="#advantages" onclick="frontend.sidebar('open');">{{ translate['advantages'] }}</a>
-          </li>
-          <li>
-            <a href="#gallery" onclick="frontend.sidebar('open');">{{ translate['gallery'] }}</a>
-          </li>
-          <li>
-            <a href="#flats" onclick="frontend.sidebar('open');">{{ translate['flats'] }}</a>
-          </li>
-          <li>
-            <a href="#aboutOfCompany" onclick="frontend.sidebar('open');">{{ translate['about_of_company'] }}</a>
-          </li>
-          <li>
-            <a href="#contacts" onclick="frontend.sidebar('open');">{{ translate['contacts'] }}</a>
-          </li>
-        </ul>
-        <div class="row mt-3 d-none">
-          <div class="col-4">
-            <a href="https://exin.kz/" target="_blank" onclick="frontend.sidebar('open');">
-              <img src="https://cms.abpx.kz{{ exin_second_logo.path }}" class="w-75 h-80" alt="">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="#" onclick="frontend.sidebar('open');">
-              <img src="https://cms.abpx.kz{{ site_second_logo.path }}" class="w-75 h-80" alt="">
-            </a>
-          </div>
-          <div class="col-4">
-            <a href="#" onclick="frontend.sidebar('open');">
-              <img src="https://cms.abpx.kz{{ halyk_second_logo.path }}" class="w-75 h-80" alt="">
-            </a>
-          </div>
-        </div>
-        <div class="call mt-auto">
-          <a href="https://instagram.com/{{ site_insta }}" target="_blank" class="insta"><i class="fab fa-instagram me-2"></i> {{ site_insta }}</a>
-          <a href="tel:{{ site_phone }}" class="phone" onclick="frontend.sidebar('open');"><i class="fas fa-phone-alt me-2"></i> {{ site_phone }}</a>
-          <a href="" class="btn btn-gradient" data-bs-toggle="modal" data-bs-target="#callbackModal" onclick="frontend.sidebar('open');">Оставить заявку</a>
-        </div>
-      </nav>
     </div> #}
+
+    {{ include('widgets/mobile_menu.twig') }}
 
     {{ include('widgets/_header.twig') }}
 
@@ -340,26 +290,29 @@
       }
 
       function sideBarToggle(condition) {
-        let button = document.getElementById('sidebarToggle')
-        let sideBar = document.querySelector('.sidebar')
-        let bars = document.querySelector('.ham5')
-        let sideBarPhone = document.querySelector('.call .phone')
-        let mainPhone = document.querySelector('.contact-block__phone')
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sideBar = document.querySelector('.sidebar');
+        const header = document.querySelector('.main-header');
 
-        sideBarPhone.href = 'tel:' + mainPhone.textContent
-        sideBarPhone.textContent = mainPhone.textContent
+        toggleBtn.classList.remove('menu-toggle--open');
+        sideBar.classList.remove('sidebar--open');
 
-        if (condition == 'open') {
-          document.body.classList.remove('sidebarOpen')
-          sideBar.classList.remove('open')
-          button.setAttribute('data-condition', '')
-        } else {
-          document.body.classList.add('sidebarOpen')
-          sideBar.classList.add('open')
-          button.setAttribute('data-condition', 'open')
-        }
+        if (window.pageYOffset < 300)
+        header.classList.remove ('main-header--sticky');
+      }
 
-        bars.classList.toggle('active')
+      function sideBarToggleBtnEvent () {
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sideBar = document.querySelector('.sidebar');
+        const header = document.querySelector('.main-header');
+
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('menu-toggle--open');
+            sideBar.classList.toggle('sidebar--open');
+
+            if (window.pageYOffset < 300)
+            header.classList.toggle('main-header--sticky');
+        });
       }
 
       function buildingStepsCarousel() {
@@ -1067,6 +1020,13 @@
 
       })()
 
+      function correctStikyHeader() {
+        const header = document.querySelector('.main-header');
+
+        if (window.pageYOffset > 300) 
+          header.classList.add('main-header--sticky');
+      }
+
       function headerMenuLinks () {
         const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item)');
 
@@ -1149,6 +1109,8 @@
         modal();
         phoneValidator();
         headerMenuLinks();
+        correctStikyHeader();
+        sideBarToggleBtnEvent();
       }
 
       function frontendResize() {

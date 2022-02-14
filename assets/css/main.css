@@ -289,6 +289,72 @@ body {
     background: #000000;
     opacity: .7; }
 
+.sidebar {
+  transform: translateX(-100%);
+  transition: transform 0.24s ease-out; }
+  .sidebar--open {
+    transform: translateX(0); }
+  .sidebar__container {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    padding: 88px 16px 16px;
+    z-index: 11;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0; }
+  .sidebar__lang {
+    margin-bottom: 20px; }
+  .sidebar__callback {
+    margin-top: auto; }
+  .sidebar__link {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px; }
+  .sidebar__insta-icon {
+    width: 18px;
+    height: 22px;
+    margin-right: 8px; }
+  .sidebar__phone-icon {
+    width: 15px;
+    height: 22px;
+    margin-right: 8px;
+    filter: invert(1); }
+
+.lang-switcher {
+  font-size: 20px; }
+  .lang-switcher__item {
+    position: relative;
+    font-weight: 600;
+    color: #F5A014; }
+    .lang-switcher__item--active {
+      color: #2C1F3D; }
+    .lang-switcher__item:first-child {
+      margin-right: 12px; }
+      .lang-switcher__item:first-child::before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 22px;
+        right: -9px;
+        top: 2px;
+        bottom: 0;
+        background: #2C1F3D; }
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column; }
+  .mobile-menu__link {
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 12px; }
+    .mobile-menu__link:hover {
+      color: #F5A014; }
+
 .main-header {
   position: fixed;
   width: 100%;
@@ -300,6 +366,9 @@ body {
     flex-wrap: wrap;
     align-items: center;
     padding: 28px 0; }
+    @media (max-width: 830px) {
+      .main-header__content {
+        padding: 8px 0; } }
   .main-header--sticky {
     color: #2C1F3D;
     background-color: #ffffff;
@@ -313,8 +382,15 @@ body {
       display: none; }
       .main-header--sticky .logo-block__img--dark {
         display: inline-block; }
+      @media (max-width: 830px) {
+        .main-header--sticky .logo-block__img {
+          height: 48px; } }
     .main-header--sticky .main-contact__phone-icon {
       filter: invert(0.8); }
+    .main-header--sticky .menu-toggle__line {
+      background-color: #2C1F3D; }
+  .main-header__menu-toggle {
+    margin-right: 12px; }
   .main-header__logos {
     margin-right: auto; }
   .main-header__navigate {
@@ -322,6 +398,43 @@ body {
     @media (max-width: 1240px) {
       .main-header__navigate {
         margin-right: 20px; } }
+  .main-header__mobile-contact {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: -4px; }
+    @media (max-width: 830px) {
+      .main-header__mobile-contact {
+        display: block; } }
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  padding: 8px 8px 8px 0px;
+  cursor: pointer; }
+  .menu-toggle__line {
+    display: inline-block;
+    height: 2px;
+    width: 20px;
+    opacity: 1;
+    border-radius: 3px;
+    transform-origin: left;
+    transform: rotate(0);
+    background-color: #ffffff;
+    transition: transform 0.24s; }
+    .menu-toggle__line:not(:last-child) {
+      margin-bottom: 5px; }
+  .menu-toggle--open .menu-toggle__line:first-child {
+    transform: rotate(45deg); }
+  .menu-toggle--open .menu-toggle__line:nth-child(2) {
+    transform: translateX(20%);
+    opacity: 0; }
+  .menu-toggle--open .menu-toggle__line:last-child {
+    transform: rotate(-45deg); }
+  @media (max-width: 1060px) {
+    .menu-toggle {
+      display: flex; } }
 
 .logo-block {
   display: flex;
@@ -340,7 +453,7 @@ body {
       display: none; }
     @media (max-width: 1240px) {
       .logo-block__img {
-        height: 60px; } }
+        height: 48px; } }
 
 .navigate__block {
   display: flex;
@@ -389,6 +502,19 @@ body {
   height: 16px;
   margin-right: 4px; }
 
+@media (max-width: 830px) {
+  .main-contact {
+    display: none; } }
+
+.mobile-contact {
+  padding: 20px 20px;
+  background: linear-gradient(258.99deg, #F28F17 2.49%, #FEED00 135.88%);
+  border-radius: 0 0 0 24px;
+  box-shadow: 0px 3px 12px -3px rgba(46, 46, 46, 0.25); }
+  .mobile-contact__phone-icon {
+    width: 24px;
+    height: 24px; }
+
 .main-slider {
   position: relative;
   display: flex;
@@ -409,7 +535,7 @@ body {
     margin-bottom: 60px; }
   @media (max-width: 830px) {
     .main-slider {
-      height: 80vh; } }
+      height: 90vh; } }
 
 .slider-content {
   position: relative;

@@ -10,6 +10,10 @@
         flex-wrap: wrap;
         align-items: center;
         padding: spacer(7) 0;
+
+        @media (max-width: 830px) {
+            padding: spacer(2) 0;
+        }
     }
 
     &--sticky {
@@ -32,11 +36,23 @@
             &--dark {
                 display: inline-block;
             }
+
+            @media (max-width: 830px) {
+                height: 48px;
+            }
         }
 
         & .main-contact__phone-icon {
             filter: invert(.8);
         }
+
+        & .menu-toggle__line {
+            background-color: $text;
+        }
+    }
+
+    &__menu-toggle {
+        margin-right: spacer(3);
     }
 
     &__logos {
@@ -49,6 +65,60 @@
         @media (max-width: 1240px) {
             margin-right: spacer(5);
         }
+    }
+
+    &__mobile-contact {
+        display: none;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: spacer(-1);
+
+        @media (max-width: 830px) {
+            display: block;
+        }
+    }
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    padding: spacer(2) spacer(2) spacer(2) spacer(0);
+    cursor: pointer;
+
+    &__line {
+        display: inline-block;
+        height: 2px;
+        width: 20px;
+        opacity: 1;
+        border-radius: 3px;
+        transform-origin: left;
+        transform: rotate(0);
+        background-color: $white;
+        transition: transform $slow-animation;
+
+        &:not(:last-child) {
+            margin-bottom: 5px;
+        }
+    }
+
+    &--open {
+        & .menu-toggle__line:first-child {
+            transform: rotate(45deg);
+        }
+
+        & .menu-toggle__line:nth-child(2) {
+            transform: translateX(20%);
+            opacity: 0;
+        }
+
+        & .menu-toggle__line:last-child {
+            transform: rotate(-45deg);
+        }
+    }
+
+    @media (max-width: 1060px) {
+        display: flex;
     }
 }
 
@@ -80,7 +150,7 @@
         }
 
         @media (max-width: 1240px) {
-            height: 60px;
+            height: 48px;
         }
     }
 }
@@ -145,5 +215,21 @@
         width: 16px;
         height: 16px;
         margin-right: spacer(1);
+    }
+
+    @media (max-width: 830px) {
+        display: none;
+    }
+}
+
+.mobile-contact {
+    padding: spacer(5) spacer(5);
+    background: $button-gradient;
+    border-radius: 0 0 0 softer(12);
+    box-shadow: $box-shadow;
+    
+    &__phone-icon {
+        width: 24px;
+        height: 24px;
     }
 }
