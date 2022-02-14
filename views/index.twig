@@ -1028,7 +1028,7 @@
       }
 
       function headerMenuLinks () {
-        const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item)');
+        const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item), .mobile-menu__link');
 
         menuItems.forEach(item => {
             item.addEventListener('click', (event) => {
