@@ -28,7 +28,7 @@
          </div>
          <div class="main-contact main-header__contact">
             <div class="main-contact__block">
-               <a href="tel:{{ site_phone }}" class="main-contact__phone">
+               <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');" class="main-contact__phone">
                   <svg class="icon main-contact__phone-icon">
                      <use xlink:href="./assets/symbol.svg?v=1#icon-phone" />
                   </svg>
@@ -40,7 +40,7 @@
             </div>
          </div>
          <div class="mobile-contact main-header__mobile-contact">
-            <a href="tel:{{ site_phone }}">
+            <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');">
                <svg class="icon mobile-contact__phone-icon">
                   <use xlink:href="./assets/symbol.svg?v=1#icon-phone" />
                </svg>

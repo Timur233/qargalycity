@@ -66,7 +66,7 @@
                         <li class="project-phones__item">
                             {% set phoneCode = phone|slice(0, 9) %}
                             {% set phoneNumber = phone|slice(9, 12) %}
-                            <a href="tel:{{ phone }}" target="_blank" class="project-phones__link">
+                            <a href="tel:{{ phone }}" target="_blank" class="project-phones__link" onclick="fbq('track', 'Contact');">
                                 {{ phoneCode }}
                                 <strong>{{ phoneNumber }}</strong>
                             </a>
