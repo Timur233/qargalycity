@@ -890,6 +890,31 @@ body {
 .map-informer__text {
   margin-left: 4px; }
 
+.contacts__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  @media (max-width: 830px) {
+    .contacts__item {
+      width: 100%; }
+      .contacts__item:not(:last-child) {
+        margin-bottom: 32px; } }
+
+.contacts__icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 24px; }
+  @media (max-width: 830px) {
+    .contacts__icon {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 16px; } }
+
+.contacts__label {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 500; }
+
 @supports (-webkit-touch-callout: none) {
   .callback-h {
     background-attachment: inherit; } }
