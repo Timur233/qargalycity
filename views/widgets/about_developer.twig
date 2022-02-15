@@ -1,42 +1,26 @@
-<section id="aboutDeveloper" class="about-developer py-6">
+<section id="about-developer" class="about-developer section section--gray">
     <div class="container">
-        <h2 class="section-title section-title--green">
-            <span class="section-title__aplet">{{ company_title }}</span>
-        </h2>
-        <div class="row">
-            <div class="col-md-4">
-                <a href="https://exin.kz/" class="m-0 m-sm-4 pt-0 pb-5 px-5 p-sm-5 d-block">
-                    <img 
-                        src="https://cms.abpx.kz/{{ exin_logo.path }}" 
-                        alt="{{ company_title}}" 
-                        class="about-developer__logo w-100"
-                    >
-                </a>
-                <div class="about-developer__desc">
+        <div class="section-title">
+            <h2 class="section-title__h2">{{ company_title }}</h2>
+        </div>
+        <div class="about-developer__block">
+            <div class="flex">
+                <div class="flex__1-2 about-developer__info">
+                    <img src="https://cms.abpx.kz{{ company_logo.path }}" alt="{{ company_title }}" class="about-developer__logo">
                     {{ company_about|raw }}
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="about-developer__items about-developer-items">
-                    {% for item in company_items %}
-                        <div class="about-developer-items__item">
-                            <span class="about-developer-items__title">
-                                {{ item.name }}
-                            </span>
-                            {{ item.settings.text|raw }}
-                        </div>
-                    {% endfor %}
+                <div class="flex__1-2 about-developer__items">
+                    <div class="flex developer-items">
+                        {% for item in company_items %}
+                            <div class="flex__1-3 developer-items__item">
+                                <h3 class="developer-items__title">
+                                    {{ item.children[0].settings.text }}
+                                </h3>
+                                {{ item.children[1].settings.text|raw }}
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="about-developer__desc">
-                    {{ company_about_two|raw }}
-                </div>
-            </div>
-            <div class="col-md-4">
-                <img 
-                    class="about-developer__image w-100"
-                    src="https://cms.abpx.kz/{{ company_image.path }}" 
-                    alt="{{ company_title}}"
-                >
             </div>
         </div>
     </div>
