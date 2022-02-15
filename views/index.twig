@@ -616,6 +616,8 @@
           },
           body: JSON.stringify(formQuery)
         });
+        
+        fbq('track', 'Lead');
 
         form.innerHTML = await response.text()
 
