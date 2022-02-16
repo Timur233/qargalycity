@@ -50,3 +50,11 @@ body {
 .swiper-wrapper {
     height: auto;
 }  
+
+.footer-content--bottom {
+    padding-top: spacer(15) !important;
+
+    &>a {
+        margin-left: auto;
+    }
+} 

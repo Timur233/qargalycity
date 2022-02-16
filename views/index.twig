@@ -38,7 +38,7 @@
 
     {{ include('widgets/locations_filter.twig') }}
 
-    {{ include('widgets/building_steps.twig') }}
+    {# {{ include('widgets/building_steps.twig') }} #}
 
     {{ include('widgets/about_developer.twig') }}
 
@@ -49,13 +49,6 @@
     {{ include('widgets/footer.twig') }}
 
     {{ include('widgets/modal.twig') }}
-
-    {# <!-- Fixed Button -->
-    <div class="fixed-callback">
-      <a href="#" class="fix-button" data-bs-toggle="modal" data-bs-target="#callbackModal">
-        <i class="fas fa-phone"></i>
-      </a>
-    </div> #}
 
   </body>
 
@@ -618,6 +611,7 @@
         });
         
         fbq('track', 'Lead');
+        document.location.href = "?page=thanks-page";
 
         form.innerHTML = await response.text()
 

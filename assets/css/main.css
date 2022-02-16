@@ -125,6 +125,11 @@ body {
 .swiper-wrapper {
   height: auto; }
 
+.footer-content--bottom {
+  padding-top: 60px !important; }
+  .footer-content--bottom > a {
+    margin-left: auto; }
+
 .container {
   max-width: 1260px;
   padding: 0 16px;
@@ -523,6 +528,8 @@ body {
   background-size: cover;
   background-position: center;
   background-image: url(https://cms.abpx.kz/storage/uploads/2022/02/08/62026bacc6f2cslider-render.jpg); }
+  .main-slider--short {
+    height: 45vh; }
   .main-slider__shadow {
     position: absolute;
     left: 0;
@@ -964,6 +971,41 @@ body {
   @media (max-width: 440px) {
     .developer-items__title {
       font-size: 20px; } }
+
+.thanks-card {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px sapcer(4); }
+  .thanks-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.4); }
+  .thanks-card::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, #000000 -8.65%, rgba(0, 0, 0, 0) 36.26%), linear-gradient(0deg, rgba(0, 0, 0, 0.7) -18.33%, rgba(0, 0, 0, 0) 48.52%); }
+  .thanks-card__block {
+    position: relative;
+    font-size: 20px;
+    font-weight: 300;
+    color: #ffffff;
+    z-index: 10;
+    text-align: center; }
+  .thanks-card__title {
+    font-size: 42px;
+    font-weight: 300;
+    color: #ffffff; }
 
 @supports (-webkit-touch-callout: none) {
   .callback-h {

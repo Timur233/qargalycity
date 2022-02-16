@@ -7,6 +7,10 @@
     background-position: center;
     background-image: url(https://cms.abpx.kz/storage/uploads/2022/02/08/62026bacc6f2cslider-render.jpg);
 
+    &--short {
+        height: 45vh;
+    }
+
     &__shadow {
         position: absolute;
         left: 0;

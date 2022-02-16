@@ -40,6 +40,14 @@ if (isset($_GET['get']) && $_GET['get'] == 'data') {
 
 if (isset($_GET['form']) && $_GET['form'] == 'send_form') {
 	include  __DIR__ . '/app/send_form.php';
+} elseif (isset($_GET['page']) && $_GET['page'] == 'thanks-page') {
+	if (isset($_GET['lang']) && !empty($_GET['lang'])) {
+		$lang = $_GET['lang'];
+	} else {
+		$lang = '';
+	}
+	$template = $twig->load('thanks.twig');
+	echo $template->render(getData($lang));
 } else {
 	if (isset($_GET['lang']) && !empty($_GET['lang'])) {
 		$lang = $_GET['lang'];
