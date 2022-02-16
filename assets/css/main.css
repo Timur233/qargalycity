@@ -972,6 +972,38 @@ body {
     .developer-items__title {
       font-size: 20px; } }
 
+.pay-methods__list {
+  padding-top: 20px; }
+
+.pay-methods__item {
+  padding: 0 80px;
+  text-align: center; }
+  @media (max-width: 1200px) {
+    .pay-methods__item {
+      padding: 0 40px; } }
+  @media (max-width: 1000px) {
+    .pay-methods__item {
+      padding: 0 12px; } }
+  @media (max-width: 830px) {
+    .pay-methods__item {
+      width: 50%;
+      padding: 0 12px; }
+      .pay-methods__item:not(:last-child) {
+        margin-bottom: 32px; } }
+  @media (max-width: 500px) {
+    .pay-methods__item {
+      width: 100%;
+      padding: 0 40px; } }
+
+.pay-methods__icon {
+  display: inline-block;
+  height: 80px;
+  margin-bottom: 20px; }
+
+.pay-methods__name {
+  font-size: 20px;
+  font-weight: 400; }
+
 .thanks-card {
   height: 100vh;
   display: flex;
