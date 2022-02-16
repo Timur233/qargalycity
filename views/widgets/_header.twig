@@ -29,9 +29,7 @@
          <div class="main-contact main-header__contact">
             <div class="main-contact__block">
                <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');" class="main-contact__phone">
-                  <svg class="icon main-contact__phone-icon">
-                     <use xlink:href="./assets/symbol.svg?v=1#icon-phone" />
-                  </svg>
+                  <img src="./assets/img/phone-icon.svg" alt="Контакты" class="icon main-contact__phone-icon">
                   {{ site_phone }}
                </a>
                <button class="btn btn--gradient" data-modal="#callback-modal">
@@ -41,9 +39,7 @@
          </div>
          <div class="mobile-contact main-header__mobile-contact">
             <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');">
-               <svg class="icon mobile-contact__phone-icon">
-                  <use xlink:href="./assets/symbol.svg?v=1#icon-phone" />
-               </svg>
+               <img src="./assets/img/phone-icon.svg" alt="Контакты" class="icon mobile-contact__phone-icon">
             </a>
          </div>
       </div>

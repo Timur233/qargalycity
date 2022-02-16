@@ -52,9 +52,7 @@
             {{ site_insta }}
         </a>
         <a href="tel:{{ site_phone }}" class="sidebar__link" onclick="frontend.sidebar('open'); fbq('track', 'Contact');">
-            <svg class="icon sidebar__phone-icon">
-                <use xlink:href="./assets/symbol.svg?v=1#icon-phone"></use>
-             </svg>
+            <img src="./assets/img/phone-icon.svg" alt="Контакты" class="icon sidebar__phone-icon">
             {{ site_phone }}
         </a>
         <button href="" class="btn btn--gradient" data-modal="#callback-modal" onclick="frontend.sidebar('open');">Оставить заявку</button>

@@ -503,6 +503,7 @@ body {
   margin-bottom: 8px; }
 
 .main-contact__phone-icon {
+  display: inline-block;
   width: 16px;
   height: 16px;
   margin-right: 4px; }
