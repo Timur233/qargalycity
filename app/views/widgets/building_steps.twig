@@ -1,0 +1,29 @@
+<section id="building-steps" class="building-steps section">
+    <div class="container">
+        <div class="section-title">
+            <h2 class="section-title__h2">{{ steps_title }}</h2>
+            <div class="section-title__control">
+                <div class="swiper-button-prev building-steps__controll"></div>
+                <div class="swiper-button-next building-steps__controll"></div>
+            </div>
+        </div>
+
+        <div class="building-steps__swiper swiper-container">
+            <div class="swiper-wrapper">
+                {% for item in steps_items %}
+                    <div 
+                        class="swiper-slide building-steps__slide" 
+                        style="background-image: url('https://cms.abpx.kz{{ item.children[2].settings.image.path }}')"
+                    >
+                            <a class="building-steps__link" href="#" data-gallery-images="{% for img in item.children[1].settings.gallery %}https://cms.abpx.kz{{ img.path}}{% if loop.last == false  %},{% endif%}{% endfor %}"  onclick="frontend.lightBox(this.getAttribute('data-gallery-images')); return false">
+                            <div class="step-information">
+                                {% set date = item.children[0].settings.text|split(' ') %}
+                                <h3 class="building-steps__title">{{ date[0] }}<br>{{ date[1] }}</h3>
+                            </div>
+                            </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,47 @@
+<header class="main-header">
+   <div class="container-fluid">
+      <div class="main-header__content">
+         <div class="menu-toggle main-header__menu-toggle">
+            <span class="menu-toggle__line"></span>
+            <span class="menu-toggle__line"></span>
+            <span class="menu-toggle__line"></span>
+         </div>
+         <div class="logo-block main-header__logos">
+            <a href="https://exin.kz/" class="logo-block__link logo-block__link--exin" target="_blank">
+               <img src="https://cms.abpx.kz{{ exin_logo.path }}" class="logo-block__img" alt="Exclusive Qurylys">
+               <img src="https://cms.abpx.kz{{ exin_second_logo.path }}" class="logo-block__img logo-block__img--dark" alt="Exclusive Qurylys">
+            </a>
+            <a href="/" class="logo-block__link">
+               <img src="https://cms.abpx.kz{{ site_logo.path }}" class="logo-block__img" alt="Qargaly City">
+               <img src="https://cms.abpx.kz{{ site_second_logo.path }}" class="logo-block__img logo-block__img--dark" alt="Qargaly City">
+            </a>
+         </div>
+         <div class="navigate main-header__navigate">
+            <nav class="navigate__block">
+               <a href="#about-project" class="navigate__link">{{ translate['about_of_project'] }}</a>
+               <a href="#gallery" class="navigate__link">{{ translate['gallery'] }}</a>
+               <a href="#advantages" class="navigate__link">{{ translate['advantages'] }}</a>
+               <a href="#locations" class="navigate__link">{{ translate['select_location'] }}</a>
+               {# <a href="#building-steps" class="navigate__link">{{ translate['building_steps'] }}</a> #}
+               <a href="#contacts" class="navigate__link">{{ translate['contacts'] }}</a>
+            </nav>
+         </div>
+         <div class="main-contact main-header__contact">
+            <div class="main-contact__block">
+               <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');" class="main-contact__phone">
+                  <img src="./assets/img/phone-icon.svg" alt="Контакты" class="icon main-contact__phone-icon">
+                  {{ site_phone }}
+               </a>
+               <button class="btn btn--gradient" data-modal="#callback-modal">
+                  Обратная связь
+               </button>
+            </div>
+         </div>
+         <div class="mobile-contact main-header__mobile-contact">
+            <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');">
+               <img src="./assets/img/phone-icon.svg" alt="Контакты" class="icon mobile-contact__phone-icon">
+            </a>
+         </div>
+      </div>
+   </div>
+</header>
