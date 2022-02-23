@@ -126,9 +126,12 @@ body {
   height: auto; }
 
 .footer-content--bottom {
+  flex-direction: column;
+  text-align: center;
+  font-size: 12px;
   padding-top: 60px !important; }
   .footer-content--bottom > a {
-    margin-left: auto; }
+    text-decoration: underline; }
 
 .container {
   max-width: 1260px;
