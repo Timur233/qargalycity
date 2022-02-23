@@ -1,8 +1,8 @@
 <?php
     class Model_Form extends Model
     {
-        function filter_by_params($lang = 'ru', $params) {	
-            return $this->fetch('collections', FLATS_COLLECTION, $params);
+        function send_form ($lang = 'ru', $form_body) {	
+            return $this->fetch('https://cms.abpx.kz/api/forms/submit/' . FORM_NAME, $form_body);
         }
     }
 ?>
