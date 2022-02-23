@@ -6,7 +6,7 @@
     <title>{{ site_title }}</title>
     <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
     <link rel="stylesheet" href="assets/css/swiper.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css?v=7">
+    <link rel="stylesheet" href="assets/css/main.css?v=8">
 
     {{ site_scripts_in_head|raw }}
   
@@ -234,7 +234,20 @@
                     iconImageSize: [144, 82],
                     iconImageOffset: [-77, -82],
                 }
-            )),
+            ));
+
+            (marker_two = new ymaps.Placemark([43.266836074524655,76.81988049999998],
+                {
+                  balloonContentHeader: "Отдел продаж",
+                  hintContent: "Отдел продаж"
+                },
+                {
+                    iconLayout: 'default#image',
+                    iconImageHref: 'https://cms.abpx.kz/storage/uploads/2022/02/10/6204ebf9b7751marker1.svg',
+                    iconImageSize: [144, 82],
+                    iconImageOffset: [-77, -82],
+                }
+            ));
             searchMap.geoObjects.add(cildrenCollection);
             searchMap.geoObjects.add(medicalShopCollection);
             searchMap.geoObjects.add(medicalCollection);
@@ -242,6 +255,7 @@
             searchMap.geoObjects.add(sportCollection);
             searchMap.geoObjects.add(shopCollection);
             searchMap.geoObjects.add(marker);
+            searchMap.geoObjects.add(marker_two);
             searchMap.behaviors.disable('scrollZoom');
       }
 
