@@ -52,9 +52,12 @@ body {
 }  
 
 .footer-content--bottom {
+    flex-direction: column;
     padding-top: spacer(15) !important;
+    font-size: 12px;
+    text-align: center;
 
     &>a {
-        margin-left: auto;
+        text-decoration: underline;
     }
 } 
