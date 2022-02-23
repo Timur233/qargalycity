@@ -835,14 +835,24 @@
         };
 
         const fetchData = (rooms = null, floor = null, square = null) => {
-          const url = new URL(document.location.href);
+          const url = new URL('qargalycity/filter', document.location.href);
+          const params = {}
           
-          url.searchParams.set('get', 'data');
-          !rooms || url.searchParams.set('rooms', rooms);
-          !floor || url.searchParams.set('floor', floor);
-          !square || url.searchParams.set('square', square);
+          !rooms || (params.rooms = rooms);
+          !floor || (params.floor = floor);
+          !square || (params.square = square);
 
-          fetch(url.href)
+          // !rooms || url.searchParams.set('rooms', rooms);
+          // !floor || url.searchParams.set('floor', floor);
+          // !square || url.searchParams.set('square', square);
+
+          fetch(url.href, {
+            method: 'POST', 
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(params)
+          })
             .then(res => res.json())
             .then(res => {
               //Checked errors

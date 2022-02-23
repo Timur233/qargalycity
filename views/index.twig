@@ -835,9 +835,8 @@
         };
 
         const fetchData = (rooms = null, floor = null, square = null) => {
-          const url = new URL(document.location.href);
+          const url = new URL('/filter', document.location.href);
           
-          url.searchParams.set('get', 'data');
           !rooms || url.searchParams.set('rooms', rooms);
           !floor || url.searchParams.set('floor', floor);
           !square || url.searchParams.set('square', square);
