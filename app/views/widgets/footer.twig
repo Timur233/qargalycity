@@ -95,7 +95,7 @@
                     <input type="text" class="footer-modal__input" id="footerModalPhone" name="user-phone" fieldname="Телефон" placeholder="Телефон" required="required">
                 </div>
                 <div class="footer-modal__buttons">
-                    <button class="callback-button footer-modal__button" onclick="footerObject.sendForm(this); return false">Заказать звонок</button>
+                    <button class="callback-button footer-modal__button" onclick="() => {footerObject.sendForm(this); return false}">Заказать звонок</button>
                 </div>
             </form>
         </div>
@@ -277,7 +277,7 @@
         }
 
         async function formSendData(formQuery, form) {
-            let response = await fetch('?form=send_form', {
+            let response = await fetch('/qargalycity/form/send', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json;charset=utf-8'
