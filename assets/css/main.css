@@ -127,15 +127,9 @@ body {
 
 .footer-content--bottom {
   flex-direction: column;
-<<<<<<< HEAD
   text-align: center;
   font-size: 12px;
   padding-top: 60px !important; }
-=======
-  padding-top: 60px !important;
-  font-size: 12px;
-  text-align: center; }
->>>>>>> main
   .footer-content--bottom > a {
     text-decoration: underline; }
 
