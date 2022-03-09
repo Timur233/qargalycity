@@ -1,522 +1,1124 @@
-//Preloader
-$(document).ready(function () {
-  setTimeout(function () {
-    $('#preloader').remove();
-    countNumbers();
-  }, 1000);
-});
+var frontend = (function frontendModule() {
+    function authorMarker() {
+        console.log('%cExclusive Qurylys with Iskandarov Timur', 'color:#fff; background-color:#7eb621; padding: 8px 15px; font-size: 14px; border-radius: 4px; text-align:center');
+    }
 
-//Marker
-console.log("%cExclusive Qurylys with Iskandarov Timur", "color:#fff; background-color:#7eb621; padding: 8px 15px; font-size: 14px; border-radius: 4px; text-align:center")
+    function paralaxSlider(offset) {
+        if (offset <= 650) {
+            const paralaxLayers = document.querySelectorAll('.parallax__layer');
 
-//Numbers
-function countNumbers() {
-  var show = true;
-  var countbox = '.number';
-  if (!show) return false; // Отменяем показ анимации, если она уже была выполнена
-  var w_top = $(window).scrollTop(); // Количество пикселей на которое была прокручена страница
-  var e_top = $(countbox).offset().top; // Расстояние от блока со счетчиками до верха всего документа
-  var w_height = $(window).height(); // Высота окна браузера
-  var d_height = $(document).height(); // Высота всего документа
-  var e_height = $(countbox).outerHeight(); // Полная высота блока со счетчиками
-  if (
-    w_top + 500 >= e_top ||
-    w_height + w_top == d_height ||
-    e_height + e_top < w_height
-  ) {
-    $('.countNumber').css('opacity', '1');
-    $('.countNumber').spincrement({
-      thousandSeparator: '',
-      duration: 3000,
-    });
+            paralaxLayers.forEach((layer) => {
+                const speed = layer.getAttribute('data-speed');
+                const duration = layer.getAttribute('data-duration');
+                const transform = offset / duration;
 
-    show = false;
-  }
-}
-
-//Slider
-$('.owl-slider').owlCarousel({
-  loop: true,
-  margin: 25,
-  nav: true,
-  autoWidth:true,
-  autoplay: $(this).attr('data-autoplay'),
-  responsive: {
-    0: {
-      items: 4, margin: 15
-    },
-    600: {
-      items: 4, margin: 25
-    },
-    1000: {
-      items: 4, margin: 25
-    },
-  },
-});
-
-//Steps
-$('.owl-steps').owlCarousel({
-  loop: false,
-  margin: 10,
-  nav: true, dots: false,
-  autoplay: false,
-  autoWidth:false,
-  responsive: {
-    0: {
-      items: 1
-    },
-    600: {
-      items: 1
-    },
-    1000: {
-      items: 1
-    },
-  },
-});
-
-function renderSteps() {
-    let steps = $('.owl-steps')
-    let items = $(steps).find('.owl-item')
-
-    $(items).each(
-        function () {
-            let a = $(this).find('a')
-            $(a).height($(a).width()*0.8)
-        }
-    )
-
-}
-
-renderSteps()
-
-//Plans
-$('.owl-plans').owlCarousel({
-  loop: false,
-  margin: 10,
-  nav: false,
-  autoplay: true,
-  autoplayHoverPause: true,
-  responsive: {
-    0: {
-      items: 1,
-    },
-    600: {
-      items: 1,
-    },
-    1000: {
-      items: 1,
-    },
-  },
-});
-
-//appartaments
-function getRooms(offers, filters) {
-    //console.log(offersAll)
-    let roomsBtnHtml = ""
-    let roomsNumberArray = []
-    for (var offer in offersAll) {
-        if (!roomsNumberArray.includes(offersAll[offer].rooms)) {
-            roomsNumberArray.push(offersAll[offer].rooms)
-            roomsBtnHtml = roomsBtnHtml + '<a class="btn btn-outline-shahar me-2 mb-3 rooms" data-filter="'+offersAll[offer].rooms+'" href="#">'+offersAll[offer].rooms+'-х комнатные</a>'
+                layer.style.transition = `${speed}s all`;
+                layer.style.transform = `${layer.style.transform.split(' ')[0]} translateY(${transform}px)`;
+            });
         }
     }
-    let rooms = document.getElementById('roomButtons')
-    rooms.innerHTML = roomsBtnHtml
-    if (filters.room == '') {
-        let activeRoom = document.querySelector('#roomButtons [data-filter="1"]')
-        activeRoom.classList.add("active")
-    } else {
-        let activeRoom = document.querySelector('#roomButtons [data-filter="'+filters.room+'"]')
-        activeRoom.classList.add("active")
-    }
-}
 
-function getFloors(offers, filters) {
-    let floorsBtnHtml = ""
-    let floorsNumberArray = []
-    for (var offer in offers) {
-        for (var floor in offers[offer].floors) {
-            if (!floorsNumberArray.includes(offers[offer].floors[floor])) {
-                floorsNumberArray.push(offers[offer].floors[floor])
-                floorsBtnHtml = floorsBtnHtml + '<a class="btn btn-outline-shahar gold me-2 mb-3 sections" data-filter="'+offers[offer].floors[floor]+'" href="#">'+offers[offer].floors[floor]+'</a>'
+    function creiateMap() {
+        const map = document.querySelector('.dragscroll>img.map-image');
+        const container = document.querySelector('.dragscroll');
+
+        if (map) {
+            showCenterMap();
+
+            function showCenterMap() {
+                map.style.position = 'absolute';
+                const left = ((map.offsetWidth - container.offsetWidth) / 2) * -1;
+                const top = ((map.offsetHeight - container.offsetHeight) / 2) * -1;
+
+                map.style.left = `${left}px`;
+                map.style.top = `${top}px`;
             }
-        }
-    }
-    let floors = document.getElementById('floorButtons')
-    floors.innerHTML = floorsBtnHtml
-    if (filters.floor != '') {
-        let activeFloor = document.querySelector('#floorButtons [data-filter="'+filters.floor+'"]')
-        if (activeFloor) {
-            activeFloor.classList.add("active")
-        } else {
-            floors.firstElementChild.classList.add("active")
-        }
-    }
-}
 
-function getSquare(offers, filters) {
-    let squareBtnHtml = ""
-    let squareNumberArray = []
-    for (var offer in offers) {
-        if (!squareNumberArray.includes(offers[offer].square)) {
-            squareNumberArray.push(offers[offer].square)
-            squareBtnHtml = squareBtnHtml + '<a class="btn btn-outline-shahar me-2 mb-3 square" data-filter="'+offers[offer].square+'" href="#">'+offers[offer].square+' м2</a>'
-        }
-    }
-    let square = document.getElementById('squareButtons')
-    square.innerHTML = squareBtnHtml
-    if (filters.square != '') {
-        let activeSquare = document.querySelector('#squareButtons [data-filter="'+filters.square+'"]')
-        if (activeSquare) {
-            activeSquare.classList.add("active")
-        } else {
-            square.firstElementChild.classList.add("active")
-        }
-    }
-}
+            map.onmousedown = function (e) {
+                const coords = getCoords(map);
+                const shiftX = e.pageX - coords.left;
+                const shiftY = e.pageY - coords.top;
 
-function filterOffers (offersAll) {
+                moveAt(e);
 
-    let offers = []
-    for (let key in offersAll) {
-        offers[key] = offersAll[key];
-    }
+                function moveAt(e) {
+                    map.style.left = `${getLmits(e).left}px`;
+                    map.style.top = `${getLmits(e).top}px`;
+                }
 
-    //
-    // console.log(offers)
+                function getLmits(e) {
+                    let left = e.pageX - container.offsetLeft - shiftX;
+                    let top = e.pageY - container.offsetTop - shiftY;
 
-    let filters = {
-        room: document.querySelector('#roomButtons a.active').getAttribute('data-filter'),
-        floor: document.querySelector('#floorButtons a.active') != null ? document.querySelector('#floorButtons a.active').getAttribute('data-filter') : '',
-        square: document.querySelector('#squareButtons a.active') != null ? document.querySelector('#squareButtons a.active').getAttribute('data-filter') : ''
-    }
+                    if (left > 0) {
+                        left = 0;
+                    }
 
-    getRooms(offers, filters)
-    if (filters.room != '') {
-        for (var offer in offers) {
-            if (offers[offer].rooms != filters.room) {
-                delete offers[offer]
-            }
-        }
-    }
-    getFloors(offers, filters)
+                    if (left < ((map.offsetWidth - container.offsetWidth) * -1)) {
+                        left = ((map.offsetWidth - container.offsetWidth) * -1);
+                    }
 
-    if (filters.floor != '') {
-        for (var offer in offers) {
-            if (!offers[offer].floors.includes(filters.floor)) {
-                delete offers[offer]
-            }
-        }
-    }
-    getSquare(offers, filters)
+                    if (top > 0) {
+                        top = 0;
+                    }
 
-    if (filters.square != '') {
-        for (var offer in offers) {
-            if (offers[offer].square != filters.square) {
-                delete offers[offer]
+                    if (top < ((map.offsetHeight - container.offsetHeight) * -1)) {
+                        top = ((map.offsetHeight - container.offsetHeight) * -1);
+                    }
+
+                    return {
+                        left,
+                        top,
+                    };
+                }
+
+                document.onmousemove = function (e) {
+                    moveAt(e);
+                };
+
+                map.onmouseup = function () {
+                    document.onmousemove = null;
+                    map.onmouseup = null;
+                };
+            };
+
+            map.ondragstart = function () {
+                return false;
+            };
+
+            function getCoords(elem) { // кроме IE8-
+                const box = elem.getBoundingClientRect();
+
+                return {
+                    top:  box.top + pageYOffset,
+                    left: box.left + pageXOffset,
+                };
             }
         }
     }
 
-    renderOffers(offers)
-    sortButtons('#roomButtons a')
-    sortButtons('#floorButtons a')
-    sortButtons('#squareButtons a')
+    function yandexMap() {
+        let center = [43.2406273791933, 76.81309677116388];
 
-}
+        if (window.outerWidth < 720) {
+            center = [43.2406273791933, 76.81309677116388];
+        }
 
-function sortButtons(selector) {
-    var nodeList = document.querySelectorAll(selector);
-    var itemsArray = [];
-    var parent = nodeList[0].parentNode;
-    for (var i = 0; i < nodeList.length; i++) {
-        itemsArray.push(parent.removeChild(nodeList[i]));
-    }
-    itemsArray.sort(function(nodeA, nodeB) {
-        var textA = nodeA.getAttribute('data-filter');
-        var textB = nodeB.getAttribute('data-filter');
-        var numberA = parseInt(textA);
-        var numberB = parseInt(textB);
-        if (numberA < numberB) return -1;
-        if (numberA > numberB) return 1;
-        return 0;
-    })
-        .forEach(function(node) {
-            parent.appendChild(node)
+        searchMap = new ymaps.Map('interective-map', {
+            center,
+            zoom:     15,
+            controls: ['zoomControl'],
         });
-}
 
-function renderOffers(offers) {
-    var offersHtml = '';
-    offersHtml += '<div class="owl-carousel owl-theme owl-plans" data-autoplay="true">';
-    offers.forEach(function (el) {
-        offersHtml += '		<div class="item">';
-        offersHtml += '        <div class="rounded-7 bg-light w-100 h-100 p-4">';
-        offersHtml += '          <div class="row h-100">';
-        offersHtml +=
-            '            <div class="col-md-5 floot-info d-flex flex-wrap">';
-        offersHtml += '              <div class="floor-data align-items-start mt-2">';
-        offersHtml += '                <h4>' + el.title + '-комнатная</h4>';
-        offersHtml += '                <p>Площадь: <b>' + el.square + ' м2</b></p>';
-        offersHtml += '                <a class="downloadPlan" data-fancybox data-caption="' + el.title + '" href="https://cms.abpx.kz/' + el.plan.path + '">Скачать планировку</a>';
-        //offersHtml += '                <div class="mb-3">';
-        //offersHtml += '                  <span>Стоимость от: </span>';
-        //offersHtml += '                  <h6>18 530 000 тг</h6>';
-        //offersHtml += '                  <b>от 306 280 за м2</b>';
-        //offersHtml += '                </div>';
-        offersHtml += '              </div>';
-        offersHtml +=
-            '              <div class="orderBottons mt-auto align-items-end">';
-        offersHtml +=
-            '                <a href="" class="btn btn-gradient mb-3" data-bs-toggle="modal" data-bs-target="#callbackModal">Обратная связь <i class="fas fa-chevron-right"></i></a>';
-        offersHtml += '              </div>';
-        offersHtml += '            </div>';
-        offersHtml += '            <div class="col-md-7 p-3 floor-plan d-flex">';
-        //offersHtml +=
-        //    '              <a href="https://cms.abpx.kz/' + el.plan.path + '" data-fancybox data-caption="' + el.title + '">';
-        offersHtml += '                <img src="https://cms.abpx.kz/' + el.plan.path + '">';
-        offersHtml += '              </a>';
-        offersHtml += '            </div>';
-        offersHtml += '          </div>';
-        offersHtml += '        </div>';
-        offersHtml += '      </div>';
-    });
-    offersHtml += '</div>';
-    let offersCarousel = document.querySelector('.plansCarousel')
-    offersCarousel.innerHTML = offersHtml
-    startOwlCarousel()
-}
+        cildrenCollection = new ymaps.GeoObjectCollection(null);
+        medicalShopCollection = new ymaps.GeoObjectCollection(null);
+        medicalCollection = new ymaps.GeoObjectCollection(null);
+        schoolCollection = new ymaps.GeoObjectCollection(null);
+        sportCollection = new ymaps.GeoObjectCollection(null);
+        shopCollection = new ymaps.GeoObjectCollection(null);
 
-function startOwlCarousel () {
-    $('.owl-plans').owlCarousel({
-        loop: false,
-        margin: 10,
-        nav: true,
-        dots: false,
-        autoplay: true,
-        autoplayHoverPause: true,
-        responsive: {
-            0: {
-                items: 1,
-            },
-            600: {
-                items: 1,
-            },
-            1000: {
-                items: 1,
-            },
-        },
-    });
-}
+        const cildren = [[43.241623, 76.804920], [43.244982, 76.813536], [43.244691, 76.818094], [43.246475, 76.816390], [43.247704, 76.815030], [43.245693, 76.822420], [43.239383, 76.816692], [43.239705, 76.819423], [43.238654, 76.819620], [43.238332, 76.821066]];
+        const medicalShop = [[43.241391, 76.812323], [43.241548, 76.813604], [43.245348, 76.815990], [43.242534, 76.818691], [43.242099, 76.819535], [43.241629, 76.817671], [43.243337, 76.815545], [43.242654, 76.815094], [43.242855, 76.813658]];
+        const medical = [[43.233883, 76.787446], [43.244020, 76.819027], [43.241816, 76.813340], [43.242649, 76.814736], [43.242095, 76.811981], [43.229371, 76.802200], [43.246503, 76.846616], [43.232789, 76.800194]];
+        const school = [[43.244226, 76.816779], [43.237635, 76.823281], [43.247580, 76.800784], [43.248077, 76.824543]];
+        const sport = [[43.243157, 76.817861], [43.241708, 76.825342], [43.237486, 76.826608]];
+        const shop = [[43.241629, 76.817662], [43.241340, 76.812321], [43.242083, 76.812304], [43.242338, 76.813797], [43.242025, 76.813228], [43.242222, 76.816105], [43.242745, 76.816184], [43.242786, 76.813692]];
 
-$('body').on('click', '#roomButtons a[data-filter]', function () {
-    $(this).parent().children('.active').removeClass('active')
-    $(this).addClass('active')
-    $('#floorButtons').children('.active').removeClass('active')
-    $('#squareButtons').children('.active').removeClass('active')
-    filterOffers(offersAll)
-    return false
-})
-
-$('body').on('click', '#floorButtons a[data-filter]', function () {
-    $(this).parent().children('.active').removeClass('active')
-    $('#squareButtons').children('.active').removeClass('active')
-    $(this).addClass('active')
-    filterOffers(offersAll)
-    return false
-})
-
-$('body').on('click', '#squareButtons a[data-filter]', function () {
-    $(this).parent().children('.active').removeClass('active')
-    $(this).addClass('active')
-    filterOffers(offersAll)
-    return false
-})
-
-filterOffers(offersAll)
-
-//Infrastructure
-$(document).ready(function () {
-  $('.stucture-card').each(function () {
-    $(this).height($(this).width() + $(this).width() * 0.25);
-  });
-  var bottom =
-    0 -
-    ($('.stucture-card .info').height() -
-      0 -
-      $('.stucture-card .info h5').height());
-  $('.stucture-card .info').css({ bottom: bottom });
-});
-
-/* Карта */
-function init() {
-  searchMap = new ymaps.Map('map', {
-    center: [43.318978, 76.897165], //43.318978, 76.897165
-    zoom: 15,
-    controls: [],
-  });
-
-    cildrenCollection = new ymaps.GeoObjectCollection(null)
-    medicalShopCollection = new ymaps.GeoObjectCollection(null)
-    medicalCollection = new ymaps.GeoObjectCollection(null)
-    schoolCollection = new ymaps.GeoObjectCollection(null)
-    sportCollection = new ymaps.GeoObjectCollection(null)
-    shopCollection = new ymaps.GeoObjectCollection(null)
-
-    let cildren = [[43.327464, 76.896974], [43.311123, 76.902510], [43.315549, 76.910670], [43.320427, 76.911147], [43.317535, 76.912817], [43.322482, 76.915108], [43.326001, 76.916873], [43.315270, 76.923220], [43.309068, 76.921788],
-        [43.303840, 76.921072],[43.318315, 76.894036],[43.313030, 76.875275],]
-    let medicalShop = [[43.316631, 76.887716], [43.311558, 76.897726], [43.326375, 76.909213], [43.323740, 76.911510], [43.315513, 76.911838],
-    [43.320984, 76.917034], [43.325776, 76.922778], [43.319786, 76.929123], [43.307684, 76.923379], [43.313502, 76.879851], [43.311701, 76.876569], [43.304750, 76.880836]]
-    let medical = [[43.320752, 76.916157], [43.313940, 76.875500], [43.305558, 76.923475], [43.316502, 76.938783], [43.338820, 76.908290], [43.296187, 76.870736]]
-    let school = [[43.322503, 76.885417], [43.337250, 76.882315], [43.337250, 76.882315], [43.335508, 76.913173], [43.335508, 76.913173],
-    [43.317568, 76.910230], [43.304384, 76.899812], [43.308043, 76.922478], [43.321516, 76.930669], [43.300725, 76.872533], [43.297182, 76.861160]]
-    let sport = [[43.326937, 76.909533], [43.329120, 76.922178], [43.322187, 76.913993], [43.303451, 76.924644], [43.305252, 76.940753]]
-    let shop = [[43.301133, 76.871379], [43.311474, 76.876906], [43.302668, 76.899015], [43.307872, 76.894447], [43.316811, 76.883256],
-    [43.311208, 76.898284], [43.318279, 76.903308], [43.321580, 76.916692], [43.321580, 76.916692], [43.306304, 76.924092],
-    [43.317345, 76.930943]]
-    for (var i = 0, l = cildren.length; i < l; i++) {
-        cildrenCollection.add(new ymaps.Placemark(cildren[i], {hintContent: 'Детский сад',balloonContent: ''},{iconLayout: 'default#image',
-            iconImageHref: 'assets/img/map/childrens.svg',iconImageSize: [40, 54.6],iconImageOffset: [-20, -54.6],}));
-    }
-    for (var i = 0, l = medicalShop.length; i < l; i++) {
-        medicalShopCollection.add(new ymaps.Placemark(medicalShop[i], {hintContent: 'Аптека',balloonContent: ''},{iconLayout: 'default#image',
-            iconImageHref: 'assets/img/map/medical_shop.svg',iconImageSize: [40, 54.6],iconImageOffset: [-20, -54.6],}));
-    }
-    for (var i = 0, l = medical.length; i < l; i++) {
-        medicalCollection.add(new ymaps.Placemark(medical[i], {hintContent: 'Поликлиника',balloonContent: ''},{iconLayout: 'default#image',
-            iconImageHref: 'assets/img/map/medical_red.svg',iconImageSize: [40, 54.6],iconImageOffset: [-20, -54.6],}));
-    }
-    for (var i = 0, l = school.length; i < l; i++) {
-        schoolCollection.add(new ymaps.Placemark(school[i], {hintContent: 'Школа',balloonContent: ''},{iconLayout: 'default#image',
-            iconImageHref: 'assets/img/map/school.svg',iconImageSize: [40, 54.6],iconImageOffset: [-20, -54.6],}));
-    }
-    for (var i = 0, l = sport.length; i < l; i++) {
-        sportCollection.add(new ymaps.Placemark(sport[i], {hintContent: 'Фитнес-центр',balloonContent: ''},{iconLayout: 'default#image',
-            iconImageHref: 'assets/img/map/sport.svg',iconImageSize: [40, 54.6],iconImageOffset: [-20, -54.6],}));
-    }
-    for (var i = 0, l = shop.length; i < l; i++) {
-        shopCollection.add(new ymaps.Placemark(shop[i], {hintContent: ' Супермаркет',balloonContent: ''},{iconLayout: 'default#image',
-            iconImageHref: 'assets/img/map/shop.svg',iconImageSize: [40, 54.6],iconImageOffset: [-20, -54.6],}));
-    }
-
-  (marker = new ymaps.Placemark([43.31518969543139,76.89723940238693],
-    {
-      hintContent: 'Shahar City',
-      balloonContent: 'Shahar City',
-    },
-    {
-      iconLayout: 'default#image',
-      iconImageHref: 'assets/img/map/shahar.png',
-      iconImageSize: [130, 178.87],
-      iconImageOffset: [-65, -178.87],
-    }
-  )),
-    searchMap.geoObjects.add(cildrenCollection);
-    searchMap.geoObjects.add(medicalShopCollection);
-    searchMap.geoObjects.add(medicalCollection);
-    searchMap.geoObjects.add(schoolCollection);
-    searchMap.geoObjects.add(sportCollection);
-    searchMap.geoObjects.add(shopCollection);
-    searchMap.geoObjects.add(marker);
-    searchMap.behaviors.disable('scrollZoom');
-
-}
-
-ymaps.ready(init);
-
-
-/* SIDEBAR */
-
-function sidebarToggle() {
-    if ($('body').hasClass('sidebarOpen')) {
-        $('body').removeClass('sidebarOpen')
-        $('.sidebar').removeClass('open')
-    } else {
-        $('body').addClass('sidebarOpen')
-        $('.sidebar').addClass('open')
-    }
-    let bars = document.querySelector('.ham5')
-    bars.classList.toggle('active')
-}
-
-$('.sidebar a').click(function(){
-    sidebarToggle()
-})
-
-$(function($){
-    $(document).mouseup(function (e){
-        var div = $(".sidebar")
-        if (!div.is(e.target) && div.hasClass('open')
-            && div.has(e.target).length === 0) {
-            sidebarToggle()
+        for (var i = 0, l = cildren.length; i < l; i++) {
+            cildrenCollection.add(new ymaps.Placemark(cildren[i], { hintContent: 'Детский сад', balloonContent: '' }, {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://shaharcity.kz/assets/img/map/childrens.svg',
+                iconImageSize:   [30, 40.9],
+                iconImageOffset: [-15, -40.9],
+            }));
         }
-    })
-})
+        for (var i = 0, l = medicalShop.length; i < l; i++) {
+            medicalShopCollection.add(new ymaps.Placemark(medicalShop[i], { hintContent: 'Аптека', balloonContent: '' }, {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://shaharcity.kz/assets/img/map/medical_shop.svg',
+                iconImageSize:   [30, 40.9],
+                iconImageOffset: [-15, -40.9],
+            }));
+        }
+        for (var i = 0, l = medical.length; i < l; i++) {
+            medicalCollection.add(new ymaps.Placemark(medical[i], { hintContent: 'Поликлиника', balloonContent: '' }, {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://shaharcity.kz/assets/img/map/medical_red.svg',
+                iconImageSize:   [30, 40.9],
+                iconImageOffset: [-15, -40.9],
+            }));
+        }
+        for (var i = 0, l = school.length; i < l; i++) {
+            schoolCollection.add(new ymaps.Placemark(school[i], { hintContent: 'Школа', balloonContent: '' }, {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://shaharcity.kz/assets/img/map/school.svg',
+                iconImageSize:   [30, 40.9],
+                iconImageOffset: [-15, -40.9],
+            }));
+        }
+        for (var i = 0, l = sport.length; i < l; i++) {
+            sportCollection.add(new ymaps.Placemark(sport[i], { hintContent: 'Фитнес-центр', balloonContent: '' }, {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://shaharcity.kz/assets/img/map/sport.svg',
+                iconImageSize:   [30, 40.9],
+                iconImageOffset: [-15, -40.9],
+            }));
+        }
+        for (var i = 0, l = shop.length; i < l; i++) {
+            shopCollection.add(new ymaps.Placemark(shop[i], { hintContent: ' Супермаркет', balloonContent: '' }, {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://shaharcity.kz/assets/img/map/shop.svg',
+                iconImageSize:   [30, 40.9],
+                iconImageOffset: [-15, -40.9],
+            }));
+        }
 
-$('#sidebarToggle').click(function () {
-    sidebarToggle()
-    return false
-})
+        (marker = new ymaps.Placemark(
+            [43.2406273791933, 76.81309677116388],
+            {},
+            {
+                iconLayout:      'default#image',
+                iconImageHref:   'https://cms.abpx.kz/storage/uploads/2022/02/10/6204ebf9b7751marker1.svg',
+                iconImageSize:   [144, 82],
+                iconImageOffset: [-77, -82],
+            },
+        )),
+        searchMap.geoObjects.add(cildrenCollection);
+        searchMap.geoObjects.add(medicalShopCollection);
+        searchMap.geoObjects.add(medicalCollection);
+        searchMap.geoObjects.add(schoolCollection);
+        searchMap.geoObjects.add(sportCollection);
+        searchMap.geoObjects.add(shopCollection);
+        searchMap.geoObjects.add(marker);
+        searchMap.behaviors.disable('scrollZoom');
+    }
 
+    function closePreloader() {
+        setTimeout(
+            () => {
+                fade(document.getElementById('preloader'));
+            },
+            0,
+        );
+    }
 
+    function creiateUserNotification() {
+        if (localStorage.getItem('notificationCheck') != 'yes') {
+            const notificationModalEl = document.getElementById('notificationModal');
 
+            if (notificationModalEl) {
+                const notificationModal = new bootstrap.Modal(notificationModalEl, {
+                    keyboard: false,
+                });
 
+                notificationModal.show();
 
+                const closeNotification = document.querySelector('#notificationModal .btn-close');
 
-var sendForm = $('.sendFormButton')
-var query = ""
-var formQuery = new Object()
+                closeNotification.addEventListener('click', () => { localStorage.setItem('notificationCheck', 'yes'); });
+                notificationModalEl.addEventListener('click', () => { localStorage.setItem('notificationCheck', 'yes'); });
+            }
+        }
+    }
 
+    function fade(element) {
+        let op = 1; // initial opacity
+        var timer = setInterval(() => {
+            if (op <= 0.1) {
+                clearInterval(timer);
+                element.style.display = 'none';
+            } else if (op >= 1) {
 
-sendForm.click(function(){
+            }
 
-    var form = $(this).parents('form')
-    var errors = false
+            element.style.opacity = op;
+            element.style.filter = `alpha(opacity=${op * 100})`;
+            op -= op * 0.16;
+        }, 0.1);
+    }
 
-    form.find('input, textarea').each(function(){
-        if ($(this).is("[required]") && $(this).val() != "" || !$(this).is("[required]") && $(this).val() != "") {
-            var id = $(this).attr("id")
-            var name = $(this).attr('placeholder')
-            var data = $(this).val()
-            formQuery[''+id] = {name, data}
-            //errors = false
-        } else if ($(this).is("[required]")) {
-            $(this).css({'border':'2px solid red'})
-            $(this).click(function () {
-                $(this).removeAttr('style')
+    function sideBarToggle(condition) {
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sideBar = document.querySelector('.sidebar');
+        const header = document.querySelector('.main-header');
+
+        toggleBtn.classList.remove('menu-toggle--open');
+        sideBar.classList.remove('sidebar--open');
+
+        if (window.pageYOffset < 300) { header.classList.remove('main-header--sticky'); }
+    }
+
+    function sideBarToggleBtnEvent() {
+        const toggleBtn = document.querySelector('.menu-toggle');
+        const sideBar = document.querySelector('.sidebar');
+        const header = document.querySelector('.main-header');
+
+        toggleBtn.addEventListener('click', () => {
+            toggleBtn.classList.toggle('menu-toggle--open');
+            sideBar.classList.toggle('sidebar--open');
+
+            if (window.pageYOffset < 300) { header.classList.toggle('main-header--sticky'); }
+        });
+    }
+
+    function buildingStepsCarousel() {
+        // Building Steps
+        let slidesPerView = 3;
+        let center = false;
+        let margin = 16;
+
+        if (window.innerWidth < 1350) {
+            slidesPerView = 3;
+        }
+
+        if (window.innerWidth < 990) {
+            slidesPerView = 2.3;
+        }
+
+        if (window.innerWidth < 768) {
+            slidesPerView = 1.3;
+            center = false;
+            margin = 16;
+        }
+
+        if (window.innerWidth < 576) {
+            slidesPerView = 1.2;
+            center = false;
+            margin = 16;
+        }
+
+        const steps = new Swiper('.building-steps__swiper', {
+            effect:                   null,
+            loop:                     false,
+            slidesPerView,
+            initialSlide:             0,
+            keyboardControl:          true,
+            mousewheelControl:        true,
+            lazyLoading:              true,
+            centeredSlides:           center,
+            preventClicks:            true,
+            preventClicksPropagation: false,
+            lazyLoadingInPrevNext:    true,
+            spaceBetween:             margin,
+            navigation:               {
+                nextEl: '.swiper-button-next.building-steps__controll',
+                prevEl: '.swiper-button-prev.building-steps__controll',
+            },
+        });
+
+        buildingStepsAutoHeight();
+    }
+
+    function buildingStepsAutoHeight() {
+        // Set autoHeight
+        const steps_items = document.querySelectorAll('.building-steps__swiper .swiper-slide');
+
+        steps_items.forEach((step) => {
+            const height = (step.offsetWidth / 10) * 13;
+
+            step.style.height = height;
+        });
+    }
+
+    function advantagesCarousel() {
+        // Advantages-swiper
+        let advantagesCount = 4;
+
+        if (window.innerWidth < 1220) {
+            advantagesCount = 3;
+        }
+
+        if (window.innerWidth < 990) {
+            advantagesCount = 2;
+        }
+
+        if (window.innerWidth < 768) {
+            advantagesCount = 1.3;
+        }
+
+        if (window.innerWidth < 576) {
+            advantagesCount = 1;
+        }
+
+        const advantages = new Swiper('.advantages-swiper', {
+            effect:                   false,
+            loop:                     false,
+            centeredSlides:           false,
+            slidesPerView:            advantagesCount,
+            initialSlide:             0,
+            keyboardControl:          true,
+            mousewheelControl:        true,
+            lazyLoading:              true,
+            preventClicks:            false,
+            preventClicksPropagation: false,
+            lazyLoadingInPrevNext:    true,
+            spaceBetween:             30,
+            navigation:               {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+        });
+    }
+
+    function galleryCarousel() {
+        const galery = new Swiper('.gallery-swiper', {
+            loop:              false,
+            slidesPerView:     'auto',
+            initialSlide:      0,
+            keyboardControl:   true,
+            mousewheelControl: true,
+            autoHeight:        true,
+            spaceBetween:      20,
+            navigation:        {
+                nextEl: '.swiper-button-next.main-gallery__controll',
+                prevEl: '.swiper-button-prev.main-gallery__controll',
+            },
+        });
+    }
+
+    function creiateLightbox(data) {
+        const lightbox = new FsLightbox();
+
+        data = data.split(',');
+        lightbox.props.sources = data;
+        lightbox.props.onInit;
+        lightbox.open();
+    }
+
+    function phoneValidator() {
+        const phoneInputs = document.querySelectorAll('input[name="phone"]');
+
+        phoneInputs.forEach((el) => {
+            el.addEventListener('input', (e) => {
+                clearMessages();
+                const numberCodes = ['710', '711', '712', '713', '714', '715', '716', '717', '718', '721', '722', '723', '724', '725', '726', '727', '728', '729', '736', '700', '701', '702', '703', '704', '705', '706', '707', '708', '709', '747', '750', '751', '760', '761', '762', '763', '764', '771', '775', '776', '777', '778'];
+                const x = e.target.value.replace(/\D/g, '').match(/(^\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+
+                e.target.value = !x[3] ? `+${x[1]}${x[2]}` : `+${x[1]} (${x[2]}) ${x[3]}${x[4] ? `-${x[4]}` : ''}${x[5] ? `-${x[5]}` : ''}`;
+
+                const errMess = document.createElement('span');
+
+                errMess.classList.add('input-err');
+                errMess.textContent = translater.no_valid_number;
+
+                // console.log(numberCodes.indexOf(x[2]))
+                if (x[3] && ((x[1] != '7') || (numberCodes.indexOf(x[2]) == -1))) {
+                    el.parentNode.appendChild(errMess);
+                } else {
+                    clearMessages();
+                }
+            });
+        });
+    }
+
+    function validatePhoneNumber(number) {
+        if (number.match(/^\+\d{1} \(\d{3}\) \d{3}\-\d{2}\-\d{2}$/)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function clearMessages() {
+        const messAll = document.querySelectorAll('.input-err');
+
+        messAll.forEach((el) => {
+            el.remove();
+        });
+    }
+
+    function formValidator(element) {
+        let errors = false;
+        const form = element.parentNode.parentNode;
+        const inputs = form.querySelectorAll('input, textarea');
+        const userName = form.querySelector('[name="name"]');
+        let formQuery = new Object();
+
+        const preloader = document.createElement('div');
+
+        preloader.classList.add('form-preloader');
+        form.appendChild(preloader);
+
+        if (userName.value == '') {
+            userName.value = 'Не указано';
+        }
+
+        inputs.forEach((el) => {
+            if (el.hasAttribute('required') && el.value != '' || !el.hasAttribute('required') && el.value != '') {
+                const { id } = el;
+                const name = el.getAttribute('fieldname');
+                const data = el.value;
+
+                formQuery[`${id}`] = { name, data };
+            } else if (el.hasAttribute('required')) {
+                el.setAttribute('style', 'border-color: red;');
+                errors = true;
+            }
+
+            if (el.name == 'phone') {
+                if (!validatePhoneNumber(el.value)) {
+                    clearMessages();
+                    const errMess = document.createElement('span');
+
+                    errMess.classList.add('input-err');
+                    errMess.textContent = translater.no_valid_number;
+                    el.parentNode.appendChild(errMess);
+                    errors = true;
+                } else {
+                    clearMessages();
+                }
+            }
+        });
+
+        if (!errors) {
+            const user_data = collect_user_data();
+
+            formQuery = Object.assign(formQuery, user_data);
+            formSendData(formQuery, form);
+        } else {
+            preloader.remove();
+        }
+    }
+
+    function collect_user_data() {
+        const url = new URL(document.location.href);
+        const user_data = new Object();
+
+        // UTM DATA
+        if (url.searchParams.get('utm_source')) {
+            const name = 'utm_source';
+            const data = url.searchParams.get('utm_source');
+
+            user_data.utm_source = { name, data };
+        }
+
+        if (url.searchParams.get('utm_medium')) {
+            const name = 'utm_medium';
+            const data = url.searchParams.get('utm_medium');
+
+            user_data.utm_medium = { name, data };
+        }
+
+        if (url.searchParams.get('utm_campaign')) {
+            const name = 'utm_campaign';
+            const data = url.searchParams.get('utm_campaign');
+
+            user_data.utm_campaign = { name, data };
+        }
+
+        if (url.searchParams.get('utm_term')) {
+            const name = 'utm_term';
+            const data = url.searchParams.get('utm_term');
+
+            user_data.utm_term = { name, data };
+        }
+
+        if (url.searchParams.get('utm_content')) {
+            const name = 'utm_content';
+            const data = url.searchParams.get('utm_content');
+
+            user_data.utm_content = { name, data };
+        }
+
+        // UserAgent
+        if (window.navigator.userAgent) {
+            const name = 'userAgent';
+            const data = window.navigator.userAgent;
+
+            user_data.userAgent = { name, data };
+        }
+
+        // Cookie
+        if (get_cookie('_ga')) {
+            const name = '_ga';
+            let data = get_cookie('_ga').split('.');
+
+            data = `${data[data.length - 2]}.${data[data.length - 1]}`;
+            user_data._ga = { name, data };
+        }
+
+        // GetCookie Function
+        function get_cookie(cookie_name) {
+            const results = document.cookie.match(`(^|;) ?${cookie_name}=([^;]*)(;|$)`);
+
+            if (results) return (unescape(results[2]));
+
+            return null;
+        }
+
+        return user_data;
+    }
+
+    async function formSendData(formQuery, form) {
+        const response = await fetch('?form=send_form', {
+            method:  'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8',
+            },
+            body: JSON.stringify(formQuery),
+        });
+
+        fbq('track', 'Lead');
+        document.location.href = '?page=thanks-page';
+
+        form.innerHTML = await response.text();
+    }
+
+    const locationFilter = (function () {
+        const filterParams = {
+            rooms:  null,
+            floor:  null,
+            square: null,
+        };
+
+        const startNewSwiper = () => {
+            const flats = new Swiper('.locations-result__carousel', {
+                loop:         false,
+                spaceBetween: 60,
+                lazy:         false,
+                navigation:   {
+                    nextEl: '.locations--controll.swiper-button-next',
+                    prevEl: '.locations--controll.swiper-button-prev',
+                },
+            });
+        };
+
+        const renderOffers = (locations) => {
+            const parent = document.querySelector('.locations__result');
+            let html = '';
+
+            html += `<div class="locations-result__carousel swiper-locations">
+                              <div class="swiper-wrapper">`;
+
+            locations.forEach((location) => {
+                html += `
+            <div class="locations-result__item swiper-slide">
+              <div class="flex location">
+                <div class="flex__1-2 location__info">
+                  <div class="locations-result__data">
+                    <h4 class="location__title">${location.rooms} комнатная</h4>
+                    <p class="location__square">Площадь: <b>${location.square} м<sup>2</sup></b></p>
+                  </div>
+                  <div class="location__btn-group">
+                    <a class="location__download" href="https://cms.abpx.kz${location.plan.path}">
+                      Скачать планировку
+                    </a>
+                    <button class="btn location__btn" onclick="frontend.modal(this)" data-modal="#callback-modal">
+                      Оставить заявку
+                    </button>
+                  </div>
+                </div>
+                <div class="flex__1-2 location__img-block">
+                  <a href="https://cms.abpx.kz${location.plan.path}" onclick="frontend.lightBox(this.getAttribute('href')); return false" >
+                    <img class="location__img" src="https://cms.abpx.kz${location.plan.path}" />
+                  </a>
+                </div>
+              </div>
+            </div>`;
+            });
+
+            html += `</div>
+                <div class="swiper-button-next locations--controll"></div>
+                <div class="swiper-button-prev locations--controll"></div>
+              </div>`;
+
+            parent.innerHTML = html;
+
+            startNewSwiper();
+        };
+
+        const renderButtons = (locations) => {
+            const locationsFilter = document.querySelector('.locations-filter');
+            const rooms =  new Set();
+            let floors =  new Set();
+            const squares =  new Set();
+
+            locations.map((location) => {
+                rooms.add(location.rooms);
+                floors = new Set(location.floors.concat(...floors));
+                squares.add(location.square);
+            });
+
+            locationsFilter.innerHTML = '';
+
+            (function () {
+                const label = document.createElement('span');
+                const btnsGroup = document.createElement('div');
+                let roomsButtons = null;
+
+                label.classList = 'locations-filter__label';
+                label.textContent = 'Количество комнат:';
+                locationsFilter.appendChild(label);
+
+                btnsGroup.classList = 'locations-filter__group filter-group';
+
+                roomsButtons = [...rooms].sort((a, b) => a - b);
+                roomsButtons.forEach((room) => {
+                    const btn = document.createElement('button');
+
+                    btn.classList = 'btn filter-group__btn filter-group__btn--room';
+
+                    if (filterParams.rooms == room) {
+                        btn.classList.add('active');
+                    }
+
+                    btn.textContent = `${room} Комнатные`;
+                    btn.setAttribute('data-filter', room);
+
+                    btn.addEventListener('click', (e) => {
+                        if (btn.classList.contains('active')) {
+                            filterParams.rooms = null;
+                        } else {
+                            filterParams.rooms = room;
+                        }
+
+                        filterParams.floor = null;
+                        filterParams.square = null;
+
+                        updateFilter();
+                    });
+
+                    btnsGroup.appendChild(btn);
+                });
+
+                locationsFilter.appendChild(btnsGroup);
+            }());
+
+            (function () {
+                const label = document.createElement('span');
+                const btnsGroup = document.createElement('div');
+                let floorsButtons = null;
+
+                label.classList = 'locations-filter__label';
+                label.textContent = 'Этаж:';
+                locationsFilter.appendChild(label);
+
+                btnsGroup.classList = 'locations-filter__group filter-group';
+
+                floorsButtons = [...floors].sort((a, b) => a - b);
+                floorsButtons.forEach((floor) => {
+                    const btn = document.createElement('button');
+
+                    btn.classList = 'btn filter-group__btn filter-group__btn--floors';
+
+                    if (filterParams.floor == floor) {
+                        btn.classList.add('active');
+                    }
+
+                    btn.textContent = floor;
+                    btn.setAttribute('data-filter', floor);
+
+                    btn.addEventListener('click', () => {
+                        if (btn.classList.contains('active')) {
+                            filterParams.floor = null;
+                        } else {
+                            filterParams.floor = floor;
+                        }
+
+                        filterParams.square = null;
+
+                        updateFilter();
+                    });
+
+                    btnsGroup.appendChild(btn);
+                });
+
+                locationsFilter.appendChild(btnsGroup);
+            }());
+
+            (function () {
+                const label = document.createElement('span');
+                const btnsGroup = document.createElement('div');
+                let squaresButtons = null;
+
+                label.classList = 'locations-filter__label';
+                label.textContent = 'Площадь:';
+                locationsFilter.appendChild(label);
+
+                btnsGroup.classList = 'locations-filter__group filter-group';
+
+                squaresButtons = [...squares].sort((a, b) => a - b);
+                squaresButtons.forEach((square) => {
+                    const btn = document.createElement('button');
+
+                    btn.classList = 'btn filter-group__btn filter-group__btn--square';
+
+                    if (filterParams.square == square) {
+                        btn.classList.add('active');
+                    }
+
+                    btn.innerHTML = `${square} м <sup>2</sup>`;
+                    btn.setAttribute('data-filter', square);
+
+                    btn.addEventListener('click', () => {
+                        if (btn.classList.contains('active')) {
+                            filterParams.square = null;
+                        } else {
+                            filterParams.square = square;
+                        }
+
+                        updateFilter();
+                    });
+
+                    btnsGroup.appendChild(btn);
+                });
+
+                locationsFilter.appendChild(btnsGroup);
+            }());
+        };
+
+        const fetchData = (rooms = null, floor = null, square = null) => {
+            const url = new URL(document.location.href);
+
+            url.searchParams.set('get', 'data');
+            !rooms || url.searchParams.set('rooms', rooms);
+            !floor || url.searchParams.set('floor', floor);
+            !square || url.searchParams.set('square', square);
+
+            fetch(url.href)
+                .then(res => res.json())
+                .then((res) => {
+                    // Checked errors
+                    renderButtons(res.entries);
+                    renderOffers(res.entries);
+                });
+        };
+
+        const updateFilter = () => {
+            fetchData(
+                filterParams.rooms,
+                filterParams.floor,
+                filterParams.square,
+            );
+        };
+
+        fetchData();
+    }());
+
+    const newFilter = (function creiateFilter() {
+        function getFloors(offers, filters) {
+            let floorsBtnHtml = '';
+            const floorsNumberArray = [];
+
+            for (const offer in offers) {
+                for (const floor in offers[offer].floors) {
+                    if (!floorsNumberArray.includes(offers[offer].floors[floor])) {
+                        floorsNumberArray.push(offers[offer].floors[floor]);
+                        floorsBtnHtml = `${floorsBtnHtml}<a class="floor-buttons__item sections" data-filter="${offers[offer].floors[floor]}" href="#" onclick="frontend.filterClick('#floorButtons', this.getAttribute('data-filter')); frontend.filterCreiate(offersAll); return false">${offers[offer].floors[floor]}</a>`;
+                    }
+                }
+            }
+            const floors = document.getElementById('floorButtons');
+
+            floors.innerHTML = floorsBtnHtml;
+
+            if (filters.floor !== '') {
+                const activeFloor = document.querySelector(`#floorButtons [data-filter="${filters.floor}"]`);
+
+                if (activeFloor) {
+                    activeFloor.classList.add('active');
+                } else {
+                    floors.firstElementChild.classList.add('active');
+                }
+            }
+        }
+
+        function getSquare(offers, filters) {
+            let squareBtnHtml = '';
+            const squareNumberArray = [];
+
+            for (const offer in offers) {
+                if (!squareNumberArray.includes(offers[offer].square)) {
+                    squareNumberArray.push(offers[offer].square);
+                    squareBtnHtml = `${squareBtnHtml}<a class="square square-buttons__item" data-filter="${offers[offer].square}" href="#" onclick="frontend.filterClick('#squareButtons', this.getAttribute('data-filter')); frontend.filterCreiate(offersAll); return false">${offers[offer].square} м<sup>2</sup></a>`;
+                }
+            }
+            const square = document.getElementById('squareButtons');
+
+            square.innerHTML = squareBtnHtml;
+
+            if (filters.square == '') {
+                const activeSquare = document.querySelector('#squareButtons .square-buttons__item:first-child');
+
+                activeSquare.classList.add('active');
+            } else {
+                const activeSquare = document.querySelector(`#squareButtons [data-filter="${filters.square}"]`);
+
+                activeSquare.classList.add('active');
+            }
+        }
+
+        function filterOffers(offersAll) {
+            const offers = [];
+
+            for (const key in offersAll) {
+                offers[key] = offersAll[key];
+            }
+
+            const filters = {
+                square: document.querySelector('#squareButtons a.active') != null ? document.querySelector('#squareButtons a.active').getAttribute('data-filter') : '',
+                floor:  document.querySelector('#floorButtons a.active') != null ? document.querySelector('#floorButtons a.active').getAttribute('data-filter') : '',
+            };
+
+            getSquare(offers, filters);
+
+            if (filters.square !== '') {
+                for (var offer in offers) {
+                    if (offers[offer].square != filters.square) {
+                        delete offers[offer];
+                    }
+                }
+            }
+
+            getFloors(offers, filters);
+
+            if (filters.floor !== '') {
+                for (var offer in offers) {
+                    if (!offers[offer].floors.includes(filters.floor)) {
+                        delete offers[offer];
+                    }
+                }
+            }
+
+            renderOffers(offers);
+            sortButtons('#floorButtons a');
+            sortButtons('#squareButtons a');
+        }
+
+        function sortButtons(selector) {
+            const nodeList = document.querySelectorAll(selector);
+            const itemsArray = [];
+            const parent = nodeList[0].parentNode;
+
+            for (let i = 0; i < nodeList.length; i++) {
+                itemsArray.push(parent.removeChild(nodeList[i]));
+            }
+            itemsArray.sort((nodeA, nodeB) => {
+                const textA = nodeA.getAttribute('data-filter');
+                const textB = nodeB.getAttribute('data-filter');
+                const numberA = parseInt(textA);
+                const numberB = parseInt(textB);
+
+                if (numberA < numberB) return -1;
+
+                if (numberA > numberB) return 1;
+
+                return 0;
             })
-            errors = true
-            //break;
+                .forEach((node) => {
+                    parent.appendChild(node);
+                });
         }
-    })
 
-    if (!errors) {
-        send_data(formQuery, form)
+        function renderOffers(offers) {
+            const priceNode = document.querySelector('.location_price');
+            const floorPlanNode = document.querySelector('.floor-plan__img');
+            const locationPlanNode = document.querySelector('.locaton-plan__img');
+            const buttonNode = document.querySelector('.download-link__location');
+            const locations = offers.filter(el => el);
+            const locationData = locations[0];
+
+            priceNode.textContent = `${locationData.price} тг.`;
+            floorPlanNode.src = `https://cms.abpx.kz${locationData.floor_plan.path}`;
+            locationPlanNode.src = `https://cms.abpx.kz${locationData.plan.path}`;
+            buttonNode.href = `https://cms.abpx.kz${locationData.plan.path}`;
+        }
+
+        function startNewSwiper(offersAll) {
+            const flats = new Swiper('.swiper-flats', {
+                spaceBetween: 20,
+                lazy:         true,
+                navigation:   {
+                    nextEl: '.flat-next',
+                    prevEl: '.flat-prev',
+                },
+            });
+        }
+
+        function activateButton(parent, dataFilter) {
+            const then = document.querySelector(`${parent} .active`);
+            const now = document.querySelector(`${parent} [data-filter="${dataFilter}"]`);
+
+            if (then != null) {
+                then.classList.remove('active');
+            }
+
+            if (now != null) {
+                now.classList.add('active');
+            }
+
+            if (parent == '#squareButtons') {
+                const floorActive = document.querySelector('#floorButtons .active');
+
+                if (floorActive != null) {
+                    floorActive.classList.remove('active');
+                }
+            }
+        }
+
+        return {
+            filterOffers,
+            activateButton,
+        };
+    }());
+
+    function correctStikyHeader() {
+        const header = document.querySelector('.main-header');
+
+        if (window.pageYOffset > 300) { header.classList.add('main-header--sticky'); }
     }
 
-    return false
+    function headerMenuLinks() {
+        const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item), .mobile-menu__link');
 
-});
+        menuItems.forEach((item) => {
+            item.addEventListener('click', (event) => {
+                const el = document.querySelector(item.getAttribute('href'));
+                const headerHeight = document.querySelector('header.main-header').offsetHeight;
 
-function send_data(formQuery, form) {
-    jQuery.ajax({
-        url: "/?form=send_form",
-        type: "POST",
-        data: "formData="+JSON.stringify(formQuery),
+                window.scrollTo({
+                    top:      el.offsetTop - headerHeight,
+                    behavior: 'smooth',
+                });
 
-        beforeSend: function() {
-            //$(form).find('.preloader').show();
-        },
-        error: function() {
-            alert("error");
-        },
-        success: function( html ) {
-            form.html(html)
+                event.preventDefault();
+            });
+        });
+    }
 
+    function activeMenuItem(scroll) {
+        const menuItems = document.querySelectorAll('.navigate__link:not(.lang-switcher__item)');
+        const headerHeight = document.querySelector('header').offsetHeight;
+        const checkActivation = (scroll, elTop, elBottom) => {
+            if (scroll >= elTop && scroll <= elBottom) {
+                return true;
+            }
+
+            return false;
+        };
+        const selectElement = (element) => {
+            const oldSelect = document.querySelector('.navigate__link--active');
+
+            if (oldSelect) oldSelect.classList.remove('navigate__link--active');
+
+            element.classList.add('navigate__link--active');
+        };
+
+        menuItems.forEach((item) => {
+            const el = document.querySelector(item.getAttribute('href'));
+
+            if (el) {
+                const isSelected = checkActivation(
+                    scroll,
+                    el.offsetTop - headerHeight,
+                    (el.offsetTop + el.offsetHeight) - headerHeight,
+                );
+
+                if (isSelected) {
+                    selectElement(item);
+                }
+            }
+        });
+    }
+
+    function modal() {
+        const buttons = document.querySelectorAll('[data-modal]');
+
+        buttons.forEach((btn) => {
+            btn.addEventListener('click', () => {
+                const modal = document.querySelector(btn.getAttribute('data-modal'));
+
+                modal.classList.toggle('modal--hidden');
+
+                return false;
+            });
+        });
+    }
+
+    function toggleModal(btn) {
+        const modal = document.querySelector(btn.getAttribute('data-modal'));
+
+        modal.classList.toggle('modal--hidden');
+
+        return false;
+    }
+
+    function frontendReady() {
+        authorMarker();
+        buildingStepsCarousel();
+        galleryCarousel();
+        // closePreloader();
+        modal();
+        phoneValidator();
+        headerMenuLinks();
+        correctStikyHeader();
+        sideBarToggleBtnEvent();
+    }
+
+    function frontendResize() {
+        buildingStepsCarousel();
+    }
+
+    function frontendScroll() {
+        // paralaxSlider(window.pageYOffset);
+        activeMenuItem(window.pageYOffset);
+        // Slider paralax
+        const scrollPosition = 0;
+        // var decor1 = document.querySelector('.decor1')
+        // var decor2 = document.querySelector('.decor2')
+        const header = document.querySelector('header');
+        const slider = document.getElementById('home');
+        // var logo = document.querySelector('header a.navbar-brand img')
+
+        if (window.pageYOffset < 700) {
+            scroll1 = window.pageYOffset / 4;
+            scroll2 = window.pageYOffset / 20;
+        // decor1.style.transform = "translateY(-" + scroll1 + "px)"
+        // decor2.style.transform = "translateY(-" + scroll2 + "px)"
+        } else if (!header.classList.contains('ymap')) {
+            header.classList.add('ymap');
+            ymaps.ready(frontend.yandex);
         }
-    });
-}
 
-$(document).ready(function () {
-    $('[name="phone"]').inputmask("+7 (999) 999 99 99")
-})
+        if (window.pageYOffset > 450)	{
+        // header.classList.add('fixed');
+        // slider.style.marginTop = header.offsetHeight + 'px';
+        // pt-4 pb-1
+        } else {
+        // header.classList.remove('fixed');
+        // slider.style.marginTop = '0px';
+        }
+
+        if (window.pageYOffset > 450)	{
+            if (!header.classList.contains('main-header--sticky')) {
+                header.classList.add('main-header--sticky');
+            }
+        } else if (header.classList.contains('main-header--sticky')) {
+            header.classList.remove('main-header--sticky');
+        }
+    }
+
+    return {
+        marker:        authorMarker,
+        steps:         buildingStepsCarousel,
+        advantages:    advantagesCarousel,
+        filterCreiate: newFilter.filterOffers,
+        filterClick:   newFilter.activateButton,
+        lightBox:      creiateLightbox,
+        sidebar:       sideBarToggle,
+        map:           creiateMap,
+        yandex:        yandexMap,
+        form:          formValidator,
+        ready:         frontendReady,
+        resize:        frontendResize,
+        scroll:        frontendScroll,
+        modal:         toggleModal,
+    };
+}());
+
+document.addEventListener('DOMContentLoaded', () => { frontend.ready(); });
+window.addEventListener('resize', () => { frontend.resize(); });
+document.addEventListener('scroll', () => { frontend.scroll(); });
