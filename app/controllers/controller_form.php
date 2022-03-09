@@ -6,6 +6,8 @@
     use app\models\Model_Form;
     use app\models\Model_Main;
 
+    include "app/models/model_main.php";
+
     class Controller_Form extends Controller {
 
         function __construct() {
