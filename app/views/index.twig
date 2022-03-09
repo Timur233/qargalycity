@@ -14,7 +14,7 @@
   <body>
   {{ site_scripts_in_body|raw }}
   
-  <div id="shadow" onclick="frontend.sidebar('open');"></div>
+  <div id="shadow" onclick="() => {frontend.sidebar('open'); return false}"></div>
 
     {# <div id="preloader">
       <div class="preloader-content">

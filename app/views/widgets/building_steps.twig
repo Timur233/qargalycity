@@ -21,7 +21,7 @@
                                     class="building-steps__link" 
                                     href="#" 
                                     data-gallery-images="{% for img in item.gallery %}https://cms.abpx.kz{{ img.styles[0].path }}{% if loop.last == false  %},{% endif%}{% endfor %}"  
-                                    onclick="frontend.lightBox(this.getAttribute('data-gallery-images')); return false">
+                                    onclick="() => {frontend.lightBox(this.getAttribute('data-gallery-images')); return false}">
                                     <div class="step-information">
                                         <h3 class="building-steps__title">{{ translate[item.format_date.month] }} {{ item.format_date.year }}</h3>
                                     </div>
