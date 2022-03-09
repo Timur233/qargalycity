@@ -1,19 +1,22 @@
 <?php
+    namespace app\controllers;
+
+    use app\core\Controller;
+    use app\models\Model_Building_Steps;
+    use app\models\Model_Main;
+    use app\core\View;
+
     class Controller_Main extends Controller
     {
+        function action_index() {
+            $data = Model_Main::get_data('ru');	
+            $data['footer']	= Model_Main::get_footer('ru');
 
-        function __construct()
-        {
-            $this->model = new Model_Main();
-            $this->view = new View();
-        }
-        
-        function action_index()
-        {
-            $data = $this->model->get_data('ru');	
-            $data['footer']	= $this->model->get_footer('ru');
+            if (PROJECT_ID !== ''):
+                $data['building_steps'] = Model_Building_Steps::get_steps('ru');
+            endif;
 
-            $this->view->generate('index.twig', $data);
+            View::generate('index.twig', $data);
         }
         
     }

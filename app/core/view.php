@@ -1,4 +1,6 @@
 <?php
+    namespace app\core;
+    
     class View {
         function generate($template_view, $data = null) {
 

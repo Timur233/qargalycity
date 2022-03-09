@@ -30,7 +30,6 @@
             $action_name = 'action_'.$action_name;
     
             // подцепляем файл с классом модели (файла модели может и не быть)
-    
             $model_file = strtolower($model_name).'.php';
             $model_path = "app/models/".$model_file;
             if(file_exists($model_path))
@@ -55,7 +54,8 @@
             }
             
             // создаем контроллер
-            $controller = new $controller_name;
+            $controller_namespace = "app\\controllers\\{$controller_name}";
+            $controller = new $controller_namespace;
             $action = $action_name;
             
             if(method_exists($controller, $action))

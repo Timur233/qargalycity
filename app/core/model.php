@@ -1,4 +1,6 @@
 <?php
+    namespace app\core;
+
     class Model
     {
         public function fetch($url, $params = array()) {

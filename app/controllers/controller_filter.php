@@ -1,10 +1,14 @@
 <?php
+    namespace app\controllers;
+
+    use app\models\Model_Filter;
+    use app\core\Controller;
+
     class Controller_Filter extends Controller
     {
 
         function __construct()
         {
-            $this->model = new Model_Filter();
             $this->query = json_decode(file_get_contents('php://input'), true);
         }
         
@@ -22,7 +26,7 @@
             if (isset($this->query['floors'])) { $params['filter']['floors'] = $this->query['floors']; }
             if (isset($this->query['square'])) { $params['filter']['square'] = $this->query['square']; }
 
-            $data = $this->model->filter_by_params('ru', $params);
+            $data = Model_Filter::filter_by_params('ru', $params);
             $data['params'] = $params;
 
             print_r(

@@ -1,14 +1,15 @@
 <?php
-    include './app/models/model_main.php';
+    namespace app\controllers;
 
-    class Controller_Form extends Controller
-    {
+    use app\core\Controller;
+    use app\core\View;
+    use app\models\Model_Form;
+    use app\models\Model_Main;
+
+    class Controller_Form extends Controller {
 
         function __construct() {
-            $this->model = new Model_Form();
-            $this->model_main = new Model_Main();
             $this->query = json_decode(file_get_contents('php://input'), true);
-            $this->view = new View();
         }
         
         function action_index() {         
@@ -23,13 +24,13 @@
                 $form_body['form'][$input['name']] = $input['data'];
             }
 
-            return self::render_responce($this->model->send_form('ru', $form_body));
+            return self::render_responce(Model_Form::send_form('ru', $form_body));
 
         }
 
         function render_responce($data) {
             
-            $site = $this->model_main->get_data('ru');
+            $site = Model_Main::get_data('ru');
 
             $viewData = array(
                 'userName'    => $data['Имя'],
@@ -37,7 +38,7 @@
                 'isPresent'   => false
             );
 
-            return $this->view->generate('widgets/thanks-msg.twig', $viewData);
+            return View::generate('widgets/thanks-msg.twig', $viewData);
         }
         
     }

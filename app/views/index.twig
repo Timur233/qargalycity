@@ -14,7 +14,7 @@
   <body>
   {{ site_scripts_in_body|raw }}
   
-  <div id="shadow" onclick="frontend.sidebar('open'); return false"></div>
+  <div id="shadow" onclick="frontend.sidebar('open');"></div>
 
     {# <div id="preloader">
       <div class="preloader-content">
@@ -40,7 +40,7 @@
 
     {{ include('widgets/locations_filter.twig') }}
 
-    {# {{ include('widgets/building_steps.twig') }} #}
+    {{ include('widgets/building_steps.twig') }}
 
     {{ include('widgets/about_developer.twig') }}
 

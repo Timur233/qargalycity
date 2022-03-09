@@ -1,4 +1,6 @@
 <?php
+    namespace app\models;
+
     class Model_Form extends Model
     {
         function send_form ($lang = 'ru', $form_body) {	
