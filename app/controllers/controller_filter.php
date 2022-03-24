@@ -26,7 +26,7 @@
             if (isset($this->query['floors'])) { $params['filter']['floors'] = $this->query['floors']; }
             if (isset($this->query['square'])) { $params['filter']['square'] = $this->query['square']; }
 
-            $data = Model_Filter::filter_by_params('ru', $params);
+            $data = Model_Filter::filter_by_params(LANG, $params);
             $data['params'] = $params;
 
             print_r(

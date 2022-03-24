@@ -10,8 +10,8 @@
     class Controller_Thanks extends Controller
     {
         function action_index() {
-            $data = Model_Main::get_data('ru');	
-            $data['footer']	= Model_Main::get_footer('ru');
+            $data = Model_Main::get_data(LANG);	
+            $data['footer']	= Model_Main::get_footer(LANG);
 
             View::generate('thanks.twig', $data);
         }

@@ -26,13 +26,13 @@
                 $form_body['form'][$input['name']] = $input['data'];
             }
 
-            return self::render_responce(Model_Form::send_form('ru', $form_body));
+            return self::render_responce(Model_Form::send_form(LANG, $form_body));
 
         }
 
         function render_responce($data) {
             
-            $site = Model_Main::get_data('ru');
+            $site = Model_Main::get_data(LANG);
 
             $viewData = array(
                 'userName'    => $data['Имя'],
