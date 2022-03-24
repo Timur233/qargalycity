@@ -128,9 +128,11 @@ body {
   height: auto; }
 
 .footer-content--bottom {
+  top: 40px;
   flex-direction: column;
   text-align: center;
-  font-size: 10px; }
+  font-size: 12px;
+  line-height: 1.4; }
   .footer-content--bottom > a {
     text-decoration: underline; }
 

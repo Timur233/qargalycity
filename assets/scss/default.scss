@@ -53,9 +53,11 @@ body {
 }  
 
 .footer-content--bottom {
+    top: 40px;
     flex-direction: column;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
+    line-height: 1.4;
 
     &>a {
         text-decoration: underline;
