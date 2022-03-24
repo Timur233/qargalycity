@@ -9,8 +9,12 @@
                 'cache' 	  => 'cache/',
                 'auto_reload' => true //true что бы автоматически чистить кэш
             ]);
+            
             $template = $twig->load($template_view);
-	
+
+            $data['base_url'] = BASE_URL;
+            $data['lang']     = LANG;
+
             echo $template->render($data);
 
         }
