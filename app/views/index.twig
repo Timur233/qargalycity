@@ -5,8 +5,8 @@
 
     <title>{{ site_title }}</title>
     <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
-    <link rel="stylesheet" href="assets/css/swiper.min.css" />
-    <link rel="stylesheet" href="assets/css/main.css?v=8">
+    <link rel="stylesheet" href="{{ base_url }}assets/css/swiper.min.css" />
+    <link rel="stylesheet" href="{{ base_url }}assets/css/main.css?v=8">
 
     {{ site_scripts_in_head|raw }}
   
@@ -54,8 +54,8 @@
 
   </body>
 
-  <script src="assets/js/swiper.min.js"></script>
-  <script src="assets/js/fslightbox.js"></script>
+  <script src="{{ base_url }}assets/js/swiper.min.js"></script>
+  <script src="{{ base_url }}assets/js/fslightbox.js"></script>
   <script
     src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=c931e95f-6835-4672-9786-8ec02a9db87a"
     type="text/javascript"

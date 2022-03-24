@@ -1,8 +1,12 @@
 <div class="sidebar sidebar__container">
 
     <div class="lang-switcher sidebar__lang">
-      <a href="{% if lang != 'ru' %}?lang=ru{% else %}#{% endif %} " class="lang-switcher__item {% if lang == 'ru' %}lang-switcher__item--active{% endif %}">RUS</a>
-      <a href="{% if lang != 'kk' %}?lang=kk{% else %}#{% endif %}" class="lang-switcher__item {% if lang == 'kk' %}lang-switcher__item--active{% endif %}">KZ</a>
+      <a 
+        href="{% if lang != 'ru' %}{{ base_url }}{% else %}#{% endif %} " 
+        class="lang-switcher__item {% if lang == 'ru' %}lang-switcher__item--active{% endif %}">RU</a>
+      <a 
+        href="{% if lang != 'kk' %}{{ base_url }}kk{% else %}#{% endif %}" 
+        class="lang-switcher__item {% if lang == 'kk' %}lang-switcher__item--active{% endif %}">KZ</a>
     </div>
 
     <nav class="mobile-menu sidebar__menu">

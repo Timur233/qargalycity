@@ -26,6 +26,14 @@
                <a href="#contacts" class="navigate__link">{{ translate['contacts'] }}</a>
             </nav>
          </div>
+         <div class="lang-switcher main-header__lang">
+            <a 
+              href="{% if lang != 'ru' %}{{ base_url }}{% else %}#{% endif %} " 
+              class="lang-switcher__item main-header__lang-link {% if lang == 'ru' %}lang-switcher__item--active{% endif %}">RU</a>
+            <a 
+              href="{% if lang != 'kk' %}{{ base_url }}kk{% else %}#{% endif %}" 
+              class="lang-switcher__item main-header__lang-link {% if lang == 'kk' %}lang-switcher__item--active{% endif %}">KZ</a>
+         </div>
          <div class="main-contact main-header__contact">
             <div class="main-contact__block">
                <a href="tel:{{ site_phone }}" onclick="fbq('track', 'Contact');" class="main-contact__phone">
@@ -33,7 +41,7 @@
                   {{ site_phone }}
                </a>
                <button class="btn btn--gradient" data-modal="#callback-modal">
-                  Обратная связь
+                  {{ translate['callback_title'] }}
                </button>
             </div>
          </div>
