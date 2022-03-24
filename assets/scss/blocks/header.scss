@@ -67,6 +67,18 @@
         }
     }
 
+    &__lang {
+        margin-right: spacer(8);
+
+        @media (max-width: 830px) {
+            display: none;
+        }
+    }
+
+    &__lang-link {
+        font-size: 18px;
+    }
+
     &__mobile-contact {
         display: none;
         position: absolute;
@@ -76,6 +88,16 @@
 
         @media (max-width: 830px) {
             display: block;
+        }
+    }
+
+    &:not(.main-header--sticky) {
+        & .lang-switcher__item--active {
+            color: $white;
+        }
+    
+        & .lang-switcher__item:first-child::before {
+            background-color: $white;
         }
     }
 }
