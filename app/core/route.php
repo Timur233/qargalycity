@@ -1,6 +1,34 @@
 <?php
     class Route
     {
+        static $langs = [
+            'list'     => array(
+                'ru',
+                'kk'
+            ),
+            'selected' => 'ru'            
+        ];
+
+        static function getLang($link) {
+            $routes = explode('/', $link);
+
+            foreach (Route::$langs['list'] as $lang) {
+                if (isset($routes[1]) && $lang === $routes[1]) {
+                    Route::$langs['selected'] = $lang;
+                    define('LANG', $lang);
+
+                    unset($routes[1]);
+
+
+                    return implode('/', $routes);
+                }
+            }
+
+            define('LANG', 'ru');
+            
+            return $link;
+        }
+
         static function start()
         {
             // контроллер и действие по умолчанию
@@ -10,6 +38,8 @@
             $base_link = str_replace('/index.php', '', $_SERVER['SCRIPT_NAME']);
             $link = str_replace($base_link, '', $_SERVER['REQUEST_URI']);
             $link = preg_replace(['/\/\?.*/', '/\?.*/'], '', $link);
+            $link = Route::getLang($link);
+
             $routes = explode('/', $link);  
             
             // получаем имя контроллера
