@@ -1,7 +1,7 @@
 <section id="contacts" class="contacts section">
   <div class="container">
     <div class="section-title">
-        <h2 class="section-title__h2">{{ translate['contacts'] }}</h2>
+        <h2 class="section-title__h2 contacts__title">{{ translate['contacts'] }}</h2>
     </div>
     <div class="flex">
       <div class="flex__1-3 contacts__item">
@@ -25,7 +25,11 @@
         >
           {{ site_adress }} 
           <hr>
-          <b>Отдел продаж:</b> <br> {{ site_adress_two }}
+          <div class="contacts__label--small">
+            <b>Отдел продаж:</b> 
+            <br>
+            {{ site_adress_two }}
+          </div>
         </span>
       </div>
       <div class="flex__1-3 contacts__item">

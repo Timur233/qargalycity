@@ -1,12 +1,13 @@
 body {
     overflow-x: hidden;
-    font-family: 'Circe';
-    font-size: 18px;
-    line-height: 1.4;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    font-weight: 500;
     color: $text;
 
     @media (max-width: 376px) {
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
@@ -29,13 +30,13 @@ body {
     align-items: center;
  
     &__h2 {
-        font-size: 38px;
+        font-size: 32px;
         line-height: 1.2;
-        font-weight: 300;
+        font-weight: 400;
         margin-bottom: spacer(5);
 
         @media (max-width: 830px) {
-            font-size: 28px;
+            font-size: 24px;
         }
     }
 
@@ -54,7 +55,7 @@ body {
 .footer-content--bottom {
     flex-direction: column;
     text-align: center;
-    font-size: 12px;
+    font-size: 10px;
 
     &>a {
         text-decoration: underline;

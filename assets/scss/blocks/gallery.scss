@@ -3,10 +3,10 @@
     position: relative;
 
     &::after {
-        font-size: 32px;
+        font-size: 30px;
 
         @media (max-width: 830px) {
-            font-size: 26px;
+            font-size: 24px;
         }
     }
 }

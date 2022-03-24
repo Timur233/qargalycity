@@ -50,18 +50,18 @@
     }
 
     &__title {
-        font-size: 28px;
+        font-size: 26px;
         color: $orange;
         background: $button-gradient;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
         @media (max-width: 990px) {
-            font-size: 24px;
+            font-size: 22px;
         }
 
         @media (max-width: 440px) {
-            font-size: 20px;
+            font-size: 18px;
         }
     }
 

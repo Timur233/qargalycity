@@ -23,15 +23,15 @@
 
 .pay-methods__icon {
   display: inline-block;
-  height: 80px;
+  height: 65px;
   margin-bottom: spacer(5); }
   @media (max-width: 500px) {
     .pay-methods__icon {
       width: 60px; } }
 
 .pay-methods__name {
-  font-size: 20px;
-  font-weight: 400; }
+  font-size: 16px;
+  font-weight: 500; }
   @media (max-width: 500px) {
     .pay-methods__name {
-      font-size: 18px; } }
+      font-size: 16px; } }
