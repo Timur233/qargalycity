@@ -561,7 +561,6 @@ var frontend = (function frontendModule() {
             body: JSON.stringify(formQuery),
         });
 
-        fbq('track', 'Lead');
         document.location.href = '?page=thanks-page';
 
         form.innerHTML = await response.text();

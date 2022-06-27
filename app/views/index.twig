@@ -625,7 +625,6 @@
           body: JSON.stringify(formQuery)
         });
         
-        fbq('track', 'Lead');
         document.location.href = "/thanks";
 
         form.innerHTML = await response.text()
