@@ -1,17 +1,146 @@
-.locations__filter {
+.flex {
   display: flex;
-  flex-direction: column;
-  padding-right: spacer(10); }
+  flex-direction: row;
+  flex-wrap: wrap; }
+  .flex__1-2 {
+    flex: 0 0 auto;
+    width: 50%; }
+  .flex__1-3 {
+    flex: 0 0 auto;
+    width: calc(100% / 3); }
+  .flex__5 {
+    flex: 0 0 auto;
+    width: calc(calc(100%/12)*5); }
+  .flex__2 {
+    flex: 0 0 auto;
+    width: calc(calc(100%/12)*2); }
+  .flex--v-center {
+    align-items: center; }
 
-.locations-filter__label {
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: spacer(1); }
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 4px 24px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 100px;
+  border: 2px solid #3992DD;
+  background-color: #3992DD;
+  transition: 0.16s background-color, 0.16s border-color, 0.24s box-shadow;
+  user-select: none; }
+  .btn:hover {
+    background-color: #4f9ee1;
+    border-color: #4f9ee1; }
+  .btn:focus, .btn:active {
+    box-shadow: 0 0 0 2px rgba(57, 146, 221, 0.3); }
+  .btn__circle {
+    padding: 8px;
+    border-color: rgba(231, 231, 231, 0.2);
+    background-color: rgba(231, 231, 231, 0.2);
+    box-shadow: 0px 2px 5px -3px black; }
+    .btn__circle > img {
+      display: block;
+      transition: 0.16s transform, 0.16s box-shadow; }
+    .btn__circle--active > img {
+      transform: rotate(180deg); }
+    .btn__circle:hover {
+      background-color: rgba(231, 231, 231, 0.2);
+      border-color: rgba(231, 231, 231, 0.2); }
+    .btn__circle:focus, .btn__circle:active {
+      background-color: rgba(231, 231, 231, 0.4);
+      border-color: rgba(231, 231, 231, 0.4);
+      box-shadow: 0px 0px 5px -3px black; }
+  .btn--gradient {
+    border: none;
+    background: linear-gradient(258.99deg, #F28F17 2.49%, #FEED00 135.88%); }
 
-.locations-filter__group {
-  margin-bottom: spacer(4); }
 
-.filter-group__btn {
-  line-height: 1.9; }
-  .filter-group__btn:not(:last-child) {
-    margin-right: spacer(2); }
+    .locations__filter {
+      display: flex;
+      flex-direction: column;
+      padding-right: 40px; }
+      @media (max-width: 830px) {
+        .locations__filter {
+          padding-right: 0; } }
+    
+    .locations--controll::after {
+      font-size: 30px;
+      color: #F5A014; }
+    
+    @media (max-width: 830px) {
+      .locations .flex__1-2 {
+        width: 100%; } }
+    
+    .locations-filter__label {
+      font-size: 14px;
+      font-weight: 400;
+      color: #000000;
+      margin-bottom: 4px; }
+    
+    .locations-filter__group {
+      margin-bottom: 20px; }
+    
+    .filter-group__btn {
+      line-height: 1.9;
+      font-weight: 500;
+      text-transform: lowercase;
+      color: #000000;
+      border-width: 2px;
+      background: none; }
+      .filter-group__btn--floors {
+        border-color: #F5A014; }
+        .filter-group__btn--floors:hover {
+          border-color: #F5A014;
+          background: #F5A014; }
+        .filter-group__btn--floors.active {
+          background: linear-gradient(258.99deg, #F28F17 2.49%, #FEED00 135.88%) !important; }
+      .filter-group__btn.active {
+        color: #ffffff;
+        background: #3992DD; }
+      .filter-group__btn:hover {
+        color: #ffffff; }
+      .filter-group__btn:not(:last-child) {
+        margin-right: 8px;
+        margin-bottom: 8px; }
+    
+    .locations-result__carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px;
+      background-color: #ffffff;
+      box-shadow: 0px 3px 12px -3px rgba(46, 46, 46, 0.25); }
+    
+    .locations-result__item {
+      padding: 40px; }
+      @media (max-width: 830px) {
+        .locations-result__item {
+          padding: 24px; } }
+    
+    .location {
+      height: 100%; }
+      .location__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; }
+        @media (max-width: 830px) {
+          .location__info {
+            text-align: center; } }
+      @media (max-width: 830px) {
+        .location__img-block {
+          order: -1;
+          margin-bottom: 0px; } }
+      .location__title {
+        font-size: 20px; }
+      .location__square {
+        font-size: 14px; }
+        @media (max-width: 830px) {
+          .location__square {
+            margin-top: 0; } }
+      .location__download {
+        display: block;
+        margin-bottom: 8px; }
+      .location__img {
+        max-width: 100%;
+        min-height: 300px; }

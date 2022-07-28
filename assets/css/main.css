@@ -136,6 +136,9 @@ body {
   .footer-content--bottom > a {
     text-decoration: underline; }
 
+.fslightbox-fade-in-strong > img {
+  background: #fff; }
+
 .container {
   max-width: 1260px;
   padding: 0 16px;
