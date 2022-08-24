@@ -6,7 +6,7 @@
     <title>{{ site_title }}</title>
     <link rel="shortcut icon" href="https://cms.abpx.kz/{{ site_favicon.path }}" type="image/png">
     <link rel="stylesheet" href="{{ base_url }}assets/css/swiper.min.css" />
-    <link rel="stylesheet" href="{{ base_url }}assets/css/main.css?v=10">
+    <link rel="stylesheet" href="{{ base_url }}assets/css/main.css?v=11">
 
     {{ site_scripts_in_head|raw }}
   
@@ -41,6 +41,8 @@
     {{ include('widgets/locations_filter.twig') }}
 
     {{ include('widgets/building_steps.twig') }}
+
+    {{ include('widgets/3d_tour.twig') }}
 
     {{ include('widgets/about_developer.twig') }}
 
@@ -1123,6 +1125,12 @@
         return false;
       }
 
+      function optimizeKuEmbed() {
+        const kuEmbed = document.querySelector('.ku-embed');
+
+        kuEmbed.style.height = (kuEmbed.offsetWidth * 0.6) + 'px';
+      }
+      
       function frontendReady() {
         authorMarker();
         buildingStepsCarousel();
@@ -1133,10 +1141,12 @@
         headerMenuLinks();
         correctStikyHeader();
         sideBarToggleBtnEvent();
+        optimizeKuEmbed();
       }
 
       function frontendResize() {
         buildingStepsCarousel();
+        optimizeKuEmbed();        
       }
 
       function frontendScroll() {

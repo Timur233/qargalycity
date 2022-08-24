@@ -139,6 +139,10 @@ body {
 .fslightbox-fade-in-strong > img {
   background: #fff; }
 
+.ku-embed {
+  display: block;
+  width: 100%; }
+
 .container {
   max-width: 1260px;
   padding: 0 16px;
