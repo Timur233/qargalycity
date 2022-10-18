@@ -724,15 +724,15 @@
                 <div class="flex location">
                   <div class="flex__1-2 location__info">
                     <div class="locations-result__data">
-                      <h4 class="location__title">${location.rooms} комнатная</h4>
-                      <p class="location__square">Площадь: <b>${location.square} м<sup>2</sup></b></p>
+                      <h4 class="location__title">${location.rooms} ${translater.multiplier}</h4>
+                      <p class="location__square">${translater.square}: <b>${location.square} м<sup>2</sup></b></p>
                     </div>
                     <div class="location__btn-group">
                       <a class="location__download" href="https://cms.abpx.kz${location.plan.path}">
-                        Скачать планировку
+                        ${translater.download_plan}
                       </a>
                       <button class="btn location__btn" onclick="frontend.modal(this)" data-modal="#callback-modal">
-                        Оставить заявку
+                        ${translater.leave_a_request}
                       </button>
                     </div>
                   </div>
@@ -777,7 +777,7 @@
             let roomsButtons = null;
             
             label.classList = 'locations-filter__label';
-            label.textContent = 'Количество комнат:';
+            label.textContent = translater.count_rooms + ':';
             locationsFilter.appendChild(label);
             
             btnsGroup.classList = 'locations-filter__group filter-group';
@@ -794,7 +794,7 @@
                 btn.classList.add('active')
               }
 
-              btn.textContent = room + ' Комнатные';
+              btn.textContent = room + ' ' + translater.multiplier;
               btn.setAttribute('data-filter', room);
 
               btn.addEventListener('click', (e) => {
@@ -823,7 +823,7 @@
             let floorsButtons = null;
             
             label.classList = 'locations-filter__label';
-            label.textContent = 'Этаж:';
+            label.textContent = translater.floor + ':';
             locationsFilter.appendChild(label);
             
             btnsGroup.classList = 'locations-filter__group filter-group';
@@ -869,7 +869,7 @@
             let squaresButtons = null;
             
             label.classList = 'locations-filter__label';
-            label.textContent = 'Площадь:';
+            label.textContent = translater.square + ':';
             locationsFilter.appendChild(label);
             
             btnsGroup.classList = 'locations-filter__group filter-group';

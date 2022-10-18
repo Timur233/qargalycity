@@ -45,7 +45,7 @@
                                 </li>
                                 {% endfor %}
                             </ul>
-                            <button class="toggle-modal-button callback-button">Обратный звонок</button>
+                            <button class="toggle-modal-button callback-button">{{ translate['footer_callback'] }}</button>
                         </div>
                     </li>
                     {% endif %}
@@ -73,12 +73,12 @@
                         </li>
                     {% endfor %}
                 </ul>
-                <button class="toggle-modal-button callback-button">Обратный звонок</button>
+                <button class="toggle-modal-button callback-button">{{ translate['footer_callback'] }}</button>
             </div>
         </div>
     </div>
     <div class="footer-content footer-content--bottom">
-        <p>Информация о ЖК опубликована с целью определения спроса на указанный продукт. Договоры о долевом участии в жилищном строительстве будут заключаться только после заключения договора о предоставлении гарантии с Фондом гарантирования или выдачи разрешения на привлечение денег дольщиков местным исполнительным органом.</p>
+        <p>{{ translate['footer_disclaimer'] }}</p>
         <a href="https://qargalycity.kz/private-police">Политика конфиденциальности</a>
     </div>
     <div class="footer-modal">
@@ -86,16 +86,16 @@
             <button class="footer-modal__close-button"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L10 10M10 10L19 19M10 10L19 1M10 10L1 19" stroke="#333333" stroke-width="1.3"/></svg></button>
             <form class="footer-modal__form" action="">
                 <h4 class="footer-modal__title">
-                    Обратный звонок
+                    {{ translate['footer_callback'] }}
                 </h4>
                 <div class="footer-modal__field">
-                    <input type="text" class="footer-modal__input" id="footerModalName" name="name" fieldname="Имя" placeholder="Имя">
+                    <input type="text" class="footer-modal__input" id="footerModalName" name="name" fieldname="Имя" placeholder="{{ translate['name'] }}">
                 </div>
                 <div class="footer-modal__field">
-                    <input type="text" class="footer-modal__input" id="footerModalPhone" name="user-phone" fieldname="Телефон" placeholder="Телефон" required="required">
+                    <input type="text" class="footer-modal__input" id="footerModalPhone" name="user-phone" fieldname="Телефон" placeholder="{{ translate['phone'] }}" required="required">
                 </div>
                 <div class="footer-modal__buttons">
-                    <button class="callback-button footer-modal__button" onclick="() => {footerObject.sendForm(this); return false}">Заказать звонок</button>
+                    <button class="callback-button footer-modal__button" onclick="() => {footerObject.sendForm(this); return false}">{{ translate['leave_a_request'] }}</button>
                 </div>
             </form>
         </div>
