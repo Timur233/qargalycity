@@ -18,6 +18,12 @@ Thumbs.db
 # cache
 /cache
 
+# stats
+/stats
+
+# usermin
+/.usermin
+
 # composer itself is not needed
 composer.phar
 
