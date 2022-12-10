@@ -6,6 +6,8 @@
     use app\models\Model_Main;
     use app\core\View;
 
+    include "app/models/model_building_steps.php";
+
     class Controller_Main extends Controller
     {
         function action_index() {
